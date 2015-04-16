@@ -1,2 +1,0 @@
-# LetsCook
-Kochforum
