@@ -1,6 +1,7 @@
---Erstellen der Tabellen:
+-- Erstellen der Tabellen:
 CREATE TABLE benutzer (
-	email			VARCHAR(200) 	NOT NULL,
+	bname			VARCHAR(200)	NOT NULL,
+	email			VARCHAR(200) 	NOT NULL UNIQUE,
 	passwort		VARCHAR(200)    NOT NULL,
 	vorname			VARCHAR(150) 	NOT NULL,
 	nachame			VARCHAR(150) 	NOT NULL,
@@ -10,31 +11,31 @@ CREATE TABLE benutzer (
 	land			VARCHAR(200)    NOT NULL,
 	geschlecht		VARCHAR(1)		NOT NULL,
 	bbild			VARCHAR(250),
-	PRIMARY KEY (email)
+	PRIMARY KEY (bname)
 );
 
 CREATE TABLE kategorie (
-	kname			VARCHAR(200)	NOT NULL,
-	kbild			VARCHAR(200)	NOT NULL,
+	kname			VARCHAR(200)	NOT NULL UNIQUE,
+	kbild			VARCHAR(200)	NOT NULL UNIQUE,
 	beschreibung 	VARCHAR(250)	NOT NULL,
 	PRIMARY KEY (kname)
 );
 
 CREATE TABLE beitrag (
-	bid			INTEGER				NOT NULL,
-	email		VARCHAR(200) 		NOT NULL,
+	bid			INTEGER				NOT NULL AUTO_INCREMENT,
+	bname		VARCHAR(200) 		NOT NULL,
 	title		VARCHAR(250) 		NOT NULL,
 	bdatum		DATE				NOT NULL,
 	text		TEXT				NOT NULL,
 	bild		VARCHAR(250)		NOT NULL,
 	kname		VARCHAR(200)		NOT NULL,
 	PRIMARY KEY (bid),
-	FOREIGN KEY (email) REFERENCES benutzer(email),
+	FOREIGN KEY (bname) REFERENCES benutzer(bname) ON UPDATE CASCADE,
 	FOREIGN KEY (kname) REFERENCES kategorie(kname)
 );
 
 CREATE TABLE kommentar (
-	kid			INTEGER 		NOT NULL,
+	kid			INTEGER 		NOT NULL AUTO_INCREMENT,
 	kdatum		DATE			NOT NULL,
 	ktext		TEXT			NOT NULL,
 	ukid		INTEGER,
@@ -45,11 +46,11 @@ CREATE TABLE kommentar (
 CREATE TABLE erstellt (
 	bid			INTEGER			NOT NULL,
 	kid			INTEGER			NOT NULL,
-	email		VARCHAR(200)	NOT NULL,
-	PRIMARY KEY (bid, kid, email),
+	bname		VARCHAR(200)	NOT NULL,
+	PRIMARY KEY (bid, kid, bname),
 	FOREIGN KEY (bid) REFERENCES beitrag(bid),
 	FOREIGN KEY (kid) REFERENCES kommentar(kid),
-	FOREIGN KEY (email) REFERENCES benutzer(email)
+	FOREIGN KEY (bname) REFERENCES benutzer(bname) ON UPDATE CASCADE
 );
 
 CREATE TABLE bewertung (
@@ -60,8 +61,14 @@ CREATE TABLE bewertung (
 	FOREIGN KEY (bid) REFERENCES beitrag(bid)
 );
 
---Inserts:
-		
+-- Inserts:
+INSERT INTO benutzer VALUES('ms', 'ms@hotmail.com', 'ms', 'markus', 'seabrooker', 'Strasse', 1130, 'Wien', 'Austria', 'm', null);
+INSERT INTO kategorie VALUES ('Mehlspeisen', 'mehlspeisen.jpg', 'Lecker lecker Mehlspeisen');
+INSERT INTO beitrag(bname, title, bdatum, text, bild, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Mehlspeisen');
+INSERT INTO beitrag(bname, title, bdatum, text, bild, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Mehlspeisen');
+INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!'); 
+INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), 'Der Kuchen ist wirklich supa!', 1); 
+INSERT INTO erstellt VALUES (1, 1, 'ms');
 
 DROP TABLE bewertung;
 DROP TABLE erstellt;
