@@ -48,17 +48,18 @@ CREATE TABLE erstellt (
 	kid			INTEGER			NOT NULL,
 	bname		VARCHAR(200)	NOT NULL,
 	PRIMARY KEY (bid, kid, bname),
-	FOREIGN KEY (bid) REFERENCES beitrag(bid),
+	FOREIGN KEY (bid) REFERENCES beitrag(bid) ON DELETE CASCADE,
 	FOREIGN KEY (kid) REFERENCES kommentar(kid),
 	FOREIGN KEY (bname) REFERENCES benutzer(bname) ON UPDATE CASCADE
 );
 
 CREATE TABLE bewertung (
+	bbid		INTEGER			NOT NULL  AUTO_INCREMENT,
 	bid			INTEGER			NOT NULL,
 	anzahl		INTEGER			NOT NULL,
 	wert		TINYINT			NOT NULL,
-	PRIMARY KEY (bid),
-	FOREIGN KEY (bid) REFERENCES beitrag(bid)
+	PRIMARY KEY (bbid, bid),
+	FOREIGN KEY (bid) REFERENCES beitrag(bid) ON DELETE CASCADE 
 );
 
 -- Inserts:
@@ -69,6 +70,7 @@ INSERT INTO beitrag(bname, title, bdatum, text, bild, kname) VALUES ('ms', 'Bana
 INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!'); 
 INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), 'Der Kuchen ist wirklich supa!', 1); 
 INSERT INTO erstellt VALUES (1, 1, 'ms');
+INSERT INTO bewertung(anzahl, wert, bid) VALUES (1, 5, 1);
 
 DROP TABLE bewertung;
 DROP TABLE erstellt;
