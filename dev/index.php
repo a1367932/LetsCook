@@ -9,6 +9,6 @@ $smarty->setCacheDir('Smarty/cache');
 $smarty->setConfigDir('Smarty/configs');
 
 $smarty->assign('name', 'Ned');
-$smarty->display('index.tpl');
+$smarty->display('registration.tpl');
 
 ?>
