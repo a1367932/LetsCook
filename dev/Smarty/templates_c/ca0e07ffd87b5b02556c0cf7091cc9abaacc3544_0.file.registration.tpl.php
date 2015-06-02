@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.25-dev/1, created on 2015-06-02 12:07:56
+<?php /* Smarty version 3.1.25-dev/1, created on 2015-06-02 12:55:00
          compiled from "Smarty/templates/registration.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:4157556d807c83d9f1_53672749%%*/
+/*%%SmartyHeaderCode:685556d8b84ca32d2_30077112%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ca0e07ffd87b5b02556c0cf7091cc9abaacc3544' => 
     array (
       0 => 'Smarty/templates/registration.tpl',
-      1 => 1433239673,
+      1 => 1433242497,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '4157556d807c83d9f1_53672749',
+  'nocache_hash' => '685556d8b84ca32d2_30077112',
   'has_nocache_code' => false,
   'version' => '3.1.25-dev/1',
-  'unifunc' => 'content_556d807c86ae24_90824243',
+  'unifunc' => 'content_556d8b84cc8c84_07958014',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_556d807c86ae24_90824243')) {
-function content_556d807c86ae24_90824243 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_556d8b84cc8c84_07958014')) {
+function content_556d8b84cc8c84_07958014 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '4157556d807c83d9f1_53672749';
+$_smarty_tpl->properties['nocache_hash'] = '685556d8b84ca32d2_30077112';
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,81 +51,61 @@ $_smarty_tpl->properties['nocache_hash'] = '4157556d807c83d9f1_53672749';
     <div class="two fields">
 		<div class="field">
      	 <label>Geschlecht</label>
-     	 <div class="ui selection dropdown">
-        	<input name="gender" type="hidden">
-        
-       		 <div class="default text">Gender</div>
-        		<i class="dropdown icon"></i>
-        	<div class="menu">
-         		 <div class="item" data-value="male">Male</div>
-         		 <div class="item" data-value="female">Female</div>
-      		 </div>
-      		</div>
+     	  <select class="ui search dropdown">
+     	    <option value="geschlecht">weiblich</option>
+      		<option value="geschlecht">m&auml;nnlich</option>
+        	<option value="geschlecht">conchita</option>
+      	</select>
     	</div>
 		</div>
  	 </div>
-</div>
+	</div>
     <div class="field"></div>
-  </div>
-  <div class="two fields">
-    <div class="field">
-      <label>State</label>
-      <select class="ui search dropdown">
-        <option value="">State</option>
-        <option value="AL">Alabama</option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
-        <option value="CA">California</option>
-        <option value="CO">Colorado</option>
-        <option value="CT">Connecticut</option>
-        <option value="DE">Delaware</option>
-        <option value="DC">District Of Columbia</option>
-        <option value="FL">Florida</option>
-        <option value="GA">Georgia</option>
-        <option value="HI">Hawaii</option>
-        <option value="ID">Idaho</option>
-        <option value="IL">Illinois</option>
-        <option value="IN">Indiana</option>
-        <option value="IA">Iowa</option>
-        <option value="KS">Kansas</option>
-        <option value="KY">Kentucky</option>
-        <option value="LA">Louisiana</option>
-        <option value="ME">Maine</option>
-        <option value="MD">Maryland</option>
-        <option value="MA">Massachusetts</option>
-        <option value="MI">Michigan</option>
-        <option value="MN">Minnesota</option>
-        <option value="MS">Mississippi</option>
-        <option value="MO">Missouri</option>
-        <option value="MT">Montana</option>
-        <option value="NE">Nebraska</option>
-        <option value="NV">Nevada</option>
-        <option value="NH">New Hampshire</option>
-        <option value="NJ">New Jersey</option>
-        <option value="NM">New Mexico</option>
-        <option value="NY">New York</option>
-        <option value="NC">North Carolina</option>
-        <option value="ND">North Dakota</option>
-        <option value="OH">Ohio</option>
-        <option value="OK">Oklahoma</option>
-        <option value="OR">Oregon</option>
-        <option value="PA">Pennsylvania</option>
-        <option value="RI">Rhode Island</option>
-        <option value="SC">South Carolina</option>
-        <option value="SD">South Dakota</option>
-        <option value="TN">Tennessee</option>
-        <option value="TX">Texas</option>
-        <option value="UT">Utah</option>
-        <option value="VT">Vermont</option>
-        <option value="VA">Virginia</option>
-        <option value="WA">Washington</option>
-        <option value="WV">West Virginia</option>
-        <option value="WI">Wisconsin</option>
-        <option value="WY">Wyoming</option>
-      </select>
-    </div>
+ 	 </div>
+
+<div class="two fields">
+	<div class="field">
+    	<label>Geburtsdatum</label>
+		<div class="ui input">
+  			<input name="geburtsdatum" placeholder="z.B. 10.02.1990" type="text">
+		</div>
+	</div>
+
+<div class="four fields">
+	<div class="field">
+    	<label>Strasse</label>
+    <div class="two fields">
+    		<div class="field">
+				<div class="ui input">
+  					<input name="strasse" placeholder="Strasse" type="text">
+				</div>
+			</div>
+	
+		<label>PLZ</label>
+		<div class="field">
+			<div class="ui input">
+  				<input name="plz" placeholder="PLZ" type="text">
+			</div>
+		</div>
+		
+	
+		<label>Ort</label>
+		<div class="field">
+			<div class="ui input">
+  				<input name="ort" placeholder="Ort" type="text">
+			</div>
+		</div>
+		
+		<label>Land</label>
+		<div class="field">
+			<div class="ui input">
+  				<input name="land" placeholder="Land" type="text">
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
     <div class="field"></div>
   </div>
   <div class="field">
