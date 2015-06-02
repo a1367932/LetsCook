@@ -29,6 +29,8 @@ CREATE TABLE beitrag (
 	bdatum		DATE				NOT NULL,
 	text		TEXT				NOT NULL,
 	bild		VARCHAR(250)		NOT NULL,
+	zutaten		VARCHAR(250)		NOT NULL,
+	portion		INTEGER				NOT NULL,
 	kname		VARCHAR(200)		NOT NULL,
 	PRIMARY KEY (bid),
 	FOREIGN KEY (bname) REFERENCES benutzer(bname) ON UPDATE CASCADE,
@@ -66,8 +68,8 @@ CREATE TABLE bewertung (
 -- Inserts:
 INSERT INTO benutzer VALUES('ms', 'ms@hotmail.com', 'ms', 'markus', 'seabrooker', '2015-06-09', 'Strasse', 1130, 'Wien', 'Austria', 'm', null);
 INSERT INTO kategorie VALUES ('Mehlspeisen', 'mehlspeisen.jpg', 'Lecker lecker Mehlspeisen');
-INSERT INTO beitrag(bname, title, bdatum, text, bild, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Mehlspeisen');
-INSERT INTO beitrag(bname, title, bdatum, text, bild, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Mehlspeisen');
+INSERT INTO beitrag(bname, title, bdatum, text, bild, zutaten, portion, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Schoko, Mehl, Zucker', 2, 'Mehlspeisen');
+INSERT INTO beitrag(bname, title, bdatum, text, bild, zutaten, portion, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Schoko, Mehl, Zucker', 2, 'Mehlspeisen');
 INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!'); 
 INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), 'Der Kuchen ist wirklich supa!', 1); 
 INSERT INTO erstellt VALUES (1, 1, 'ms');
