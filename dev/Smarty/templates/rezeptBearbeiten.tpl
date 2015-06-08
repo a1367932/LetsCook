@@ -6,7 +6,7 @@
       $("#header").load("Smarty/templates/header.tpl"); 
     });
     </script>
-	<title>Neues Rezept</title>
+	<title>Rezept bearbeiten</title>
 </head>
 <body>
 <div class="container">
@@ -16,26 +16,29 @@
 		  <div class="large-12 columns">
 			<div class="panel">
 			
-	<form action="neuesRezept.class.php" method="POST" enctype="multipart/form-data">
+	<form action="rezeptBearbeiten.class.php" method="POST" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>Rezeptname</td>
-			<td><input type="text" name="titel" ></td>
+			<td><input type="text" name="titel" value="{$titel}"></td>
 		</tr>
 		<tr>
 			<td>Rezeptbild (.jpg, max. 5MB)</td>
-			<td><input type="file" name="bild" accept="image/*"> </td>
+			<td><input type="file" name="bild" accept="image/*" value="{$bild}"> </td>
 		</tr>
 		<tr>
 			<td>Zutaten</td>
-			<td><textarea rows="4" cols="50" name="zutaten">Trennen Sie die einzelnen Zutaten mit einem Beistrich! (90g Butter, 1l Wasser) </textarea> </td>
+			<td><textarea rows="4" cols="50" name="zutaten">{$zutaten}</textarea> </td>
 		</tr>
 		<tr>
 			<td>Portitonen</td>
-			<td><select name="portion" size="1"> 
+			<td><select name="portion" size="1" value="{$portion}"> 
 					<script type="text/javascript">
 					  	var portionen="";
 						for (var i = 1; i <= 10; i++) 
+							if({$portion}==i.toString())
+								portionen=portionen+'<option selected>'+i+'</option>';
+							else
 								portionen=portionen+'<option>'+i+'</option>';
 						document.write(portionen);
 					</script>
@@ -43,21 +46,14 @@
 		</tr>
 		<tr>
 			<td>Zubereitungsanweisungen</td>
-			<td><textarea rows="4" cols="50" name="btext">Erl&auml;utern Sie die Zubereitungsschritte!</textarea> </td>
+			<td><textarea rows="4" cols="50" name="btext">{$btext}</textarea> </td>
 		</tr>
 		<tr>
 			<td>Kategorie w&auml;hlen</td>
-			<td><select name="kname" size="1"> 
-					<option>Fr&uuml;hst&uuml;ck</option>
-					<option>Vorspeise</option>
-					<option>Hauptspeise</option>
-					<option>Dessert</option>
-					<option>Beilage</option>
-					<option>Salat</option>
-				</select></td>
+			<td>{$kname}</td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Speichern" name="neuesRezeptSubmit"></td>
+			<td><input type="submit" value="Speichern" name="rezeptBearbeitenSubmit"></td>
 		</tr>
 	</table>
 	</form>

@@ -17,51 +17,33 @@
 		  <div class="large-12 columns">
 			<div class="panel">
 			  <b>Kochforen</b>
-				<p>Sie haben Fragen rund um Kochrezepte, Zutaten oder Zubereitung sowie Ernährung? Vom kompletten Menü bis
-				zum Dessert finden Sie hier passende Rezepte z.B. für Party, Kinder oder Diäten von Weight Watchers bis SIS.</p>
+				<p>Sie haben Fragen rund um Kochrezepte, Zutaten oder Zubereitung sowie Ern&auml;hrung? Vom kompletten Men&uuml; bis
+				zum Dessert finden Sie hier passende Rezepte z.B. f&uuml;r Party, Kinder oder Di&auml;ten von Weight Watchers bis SIS.</p>
 				
 				<table>
 				  <tbody>
 					<tr>
-					  <td width="50%"><a href="">Aufläufe</a></td>
+					  <td><img src="/fruestueck.jpg" alt="Fr&uuml;st&uuml;ck"></td>
+					  <td width="50%"><a href="">Fr&uuml;st&uuml;ck</a></td>
 					  <td width="50px">0</td>
-					  <td width="50%"><a href="">Brot & Brötchen</td>
+					   <td><img src="/vorspeise.jpg" alt="Vorspeise"></td>
+					  <td width="50%"><a href="">Vorspeise</td>
 					  <td width="50px">0</td>
 					</tr>
 					<tr>
-					  <td><a href="">Desserts & Süßspeisen</a></td>
+					  <td><img src="/hauptspeise.jpg" alt="Hauptspeise"></td>
+					  <td><a href="">Hauptspeise</a></td>
 					  <td>0</td>
-					   <td><a href="">Desserts & Süßspeisen</a></td>
-					  <td>0</td>
-					</tr>
-					<tr>
-					  <td><a href="">Suppen & Eintöpfe</a></td>
-					  <td>0</td>
-					   <td><a href="">Desserts & Süßspeisen</a></td>
+					   <td><img src="/dessert.jpg" alt="Dessert"></td>
+					   <td><a href="">Dessert</a></td>
 					  <td>0</td>
 					</tr>
 					<tr>
-					  <td><a href="">Fisch & Meeresfrüchte</a></td>
+					   <td><img src="/beilage.jpg" alt="Beilage"></td>
+					  <td><a href="">Beilage</a></td>
 					  <td>0</td>
-					   <td><a href="">Grillen</a></td>
-					  <td>0</td>
-					</tr>
-					<tr>
-					  <td><a href="">Fleisch</a></td>
-					  <td>0</td>
-					   <td><a href="">Milchprodukte</td>
-					  <td>0</td>
-					</tr>
-					<tr>
-					  <td><a href="">Gemüse und Salat</a></td>
-					  <td>0</td>
-					   <td><a href="">Partyrezepte</a></td>
-					  <td>0</td>
-					</tr>
-					  <tr>
-					  <td><a href="">Vegetarisch</a></td>
-					  <td>0</td>
-					   <td><a href="">Torten & Kuchen</a></td>
+					   <td><img src="/salat.jpg" alt="Salat"></td>
+					   <td><a href="">Salat</a></td>
 					  <td>0</td>
 					</tr>
 				  </tbody>
