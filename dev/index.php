@@ -11,6 +11,7 @@ $smarty->setCacheDir('Smarty/cache');
 $smarty->setConfigDir('Smarty/configs');
 
 $smarty->assign('name', 'Ned');
+$smarty->assign('login', 'false');
 $smarty->display('index.tpl');
 
 ?>

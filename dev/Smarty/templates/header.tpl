@@ -10,7 +10,7 @@
 		  <h3>Projektname</h3>
 		</div>
 
-		<form>
+		<form  action="classes/index.class.php" method="POST">
 		  <div class="large-3 columns">
 			<input type="text" name="username" placeholder="Username" />
 		  </div>
@@ -18,7 +18,7 @@
 			<input type="password" name="password" placeholder="Password" />
 		  </div>
 			<div class="large-1 columns">
-			  <input type="image" src="src/images/foundation-icons/svgs/fi-fast-forward.svg" alt="Submit" width="35em" height="35em"/>
+			  <input type="image" src="src/images/foundation-icons/svgs/fi-fast-forward.svg" alt="Submit" name="loginSubmit" width="35em" height="35em"/>
 			</div>
 		</form>
 		<div class="row">

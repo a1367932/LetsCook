@@ -10,8 +10,12 @@
   </head>
   <body>
 	<div class="container">
-	  
-	  <div id="header"/></div>
+	 seife {$login}
+	  {if {$login} eq "true"}
+			<div id="header"/></div>
+		{else}
+			<div id="header"/></div>
+		{/if}
 	  
 		<div class="row">
 		  <div class="large-12 columns">
