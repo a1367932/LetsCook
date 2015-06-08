@@ -67,7 +67,7 @@
 		<tr>
 			<td>Adresse</td>
 			<td><input type="text" name="strasse" placeholder="Strasse"></td>
-			<td><input type="text" name="nummer" placeholder="Hausnummer"></td>
+			<td><input type="text" name="hausnummer" placeholder="Hausnummer"></td>
 			<td><input type="text" name="plz" placeholder="PLZ"></td>
 			<td><input type="text" name="ort" placeholder="Ort"></td>
 			<td><input type="text" name="land" placeholder="Land"></td>
@@ -93,7 +93,7 @@
 			<td><input type="file" name="bbild" accept="image/*"> </td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Absenden"></td>
+			<td><input type="submit" value="Absenden" name="registrationSubmit"></td>
 		</tr>
 	</table>
 	</form>

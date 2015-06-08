@@ -7,6 +7,7 @@ CREATE TABLE benutzer (
 	nachame			VARCHAR(150) 	NOT NULL,
 	geburtsdatum	DATE			NOT NULL,
 	strasse			VARCHAR(255) 	NOT NULL,
+	hausnummer		VARCHAR(100)	NOT NULL,
 	plz				INTEGER 		NOT NULL,
 	ort				VARCHAR(200) 	NOT NULL,
 	land			VARCHAR(200)    NOT NULL,
@@ -66,7 +67,7 @@ CREATE TABLE bewertung (
 );
 
 -- Inserts:
-INSERT INTO benutzer VALUES('ms', 'ms@hotmail.com', 'ms', 'markus', 'seabrooker', '2015-06-09', 'Strasse', 1130, 'Wien', 'Austria', 'm', null);
+INSERT INTO benutzer VALUES('ms', 'ms@hotmail.com', 'ms', 'markus', 'seabrooker', '2015-06-09', 'Strasse', '123', 1130, 'Wien', 'Austria', 'm', null);
 INSERT INTO kategorie VALUES ('Mehlspeisen', 'mehlspeisen.jpg', 'Lecker lecker Mehlspeisen');
 INSERT INTO beitrag(bname, title, bdatum, text, bild, zutaten, portion, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Schoko, Mehl, Zucker', 2, 'Mehlspeisen');
 INSERT INTO beitrag(bname, title, bdatum, text, bild, zutaten, portion, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Schoko, Mehl, Zucker', 2, 'Mehlspeisen');
