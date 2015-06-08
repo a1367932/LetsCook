@@ -1,5 +1,6 @@
 <?php
-if ( !isset( $_POST['bearbeitenSubmit'] ) ) {
+
+if ( !isset( $_POST['meineDatenSubmit'] ) ) {
 	require('../Smarty/libs/Smarty.class.php');
 	require('../config/constants.php');
 
@@ -18,10 +19,11 @@ if ( !isset( $_POST['bearbeitenSubmit'] ) ) {
 	$smarty->assign('ort', 'Musterort');
 	$smarty->assign('land', 'Musterland');
 	$smarty->assign('email', 'muster@muster.at');
-	$smarty->display('datenBearbeiten.tpl');
+	$smarty->assign('alter', 'aktuelesDatum-geburtsdatum');
+	$smarty->assign('bbild', 'pfad zum bild');
+	$smarty->assign('bname', 'BenutzernameHans');
+	$smarty->display('meineDaten.tpl');
 }else{
-	//Speichern der ändernungen und weiterleiten zu Meine Daten
-	
-	header("Location: meineDaten.class.php");
+	header("Location: datenBearbeiten.class.php");
 }
 ?>
