@@ -1,6 +1,8 @@
 <?php
 
 require('Smarty/libs/Smarty.class.php');
+require('config/constants.php');
+
 $smarty = new Smarty();
 
 $smarty->setTemplateDir('Smarty/templates');
@@ -9,6 +11,6 @@ $smarty->setCacheDir('Smarty/cache');
 $smarty->setConfigDir('Smarty/configs');
 
 $smarty->assign('name', 'Ned');
-$smarty->display('registration.tpl');
+$smarty->display('index.tpl');
 
 ?>

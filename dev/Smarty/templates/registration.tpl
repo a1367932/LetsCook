@@ -1,12 +1,14 @@
-<!DOCTYPE html>
 <html>
 <head>
-<link rel ="stylesheet" href="src/semantic/semantic.min.css"></link>
-<title>Insert title here</title>
+  <script> 
+    $(function(){
+      $("#header").load("Smarty/templates/header.tpl"); 
+    });
+    </script>
+<title>Registration</title>
 </head>
 <body>
-
-
+ <div id="header"/></div>
 <form class="ui form">
   <h4 class="ui dividing header">Personal Information</h4>
   <div class="two fields">
