@@ -26,7 +26,7 @@ CREATE TABLE kategorie (
 CREATE TABLE beitrag (
 	bid			INTEGER				NOT NULL AUTO_INCREMENT,
 	bname		VARCHAR(200) 		NOT NULL,
-	title		VARCHAR(250) 		NOT NULL,
+	titel		VARCHAR(250) 		NOT NULL,
 	bdatum		DATE				NOT NULL,
 	btext		TEXT				NOT NULL,
 	bild		VARCHAR(250)		NOT NULL,
@@ -74,8 +74,8 @@ INSERT INTO kategorie VALUES ('Hauptspeise', 'hauptspeise.jpg', 'Lecker lecker H
 INSERT INTO kategorie VALUES ('Dessert', 'dessert.jpg', 'Lecker lecker Dessert');
 INSERT INTO kategorie VALUES ('Beilage', 'beilage.jpg', 'Lecker lecker Beilage');
 INSERT INTO kategorie VALUES ('Salat', 'salat.jpg', 'Lecker lecker Salat');
-INSERT INTO beitrag(bname, title, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Schoko, Mehl, Zucker', 2, 'Dessert');
-INSERT INTO beitrag(bname, title, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Schoko, Mehl, Zucker', 2, 'Dessert');
+INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Schoko, Mehl, Zucker', 2, 'Dessert');
+INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Schoko, Mehl, Zucker', 2, 'Dessert');
 INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!'); 
 INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), 'Der Kuchen ist wirklich supa!', 1); 
 INSERT INTO erstellt VALUES (1, 1, 'ms');

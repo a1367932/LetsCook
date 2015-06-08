@@ -20,7 +20,7 @@ elseif ( isset( $_POST['neuesRezeptSubmit'] ) ) {
 	
 	//Rezept speichern
 	//TODO $_Session['bname']
-	$sqlInsert = "INSERT INTO beitrag(bname, title, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', '".$_POST['titel']."', SYSDATE(), '".$_POST['btext']."', '".$_POST['titel'].".jpg', '".$_POST['zutaten']."', ".$_POST['portion'].", '".$_POST['kname']."')";
+	$sqlInsert = "INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', '".$_POST['titel']."', SYSDATE(), '".$_POST['btext']."', '".$_POST['titel'].".jpg', '".$_POST['zutaten']."', ".$_POST['portion'].", '".$_POST['kname']."')";
 	
 	//SQL - Anweisung ausführen
 	if (mysqli_query($conn, $sqlInsert)) {

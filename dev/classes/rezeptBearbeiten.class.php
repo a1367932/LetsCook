@@ -1,5 +1,5 @@
 <?php
-if ( !isset( $_POST['bearbeitenSubmit'] ) ) {
+if ( !isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 	require('../Smarty/libs/Smarty.class.php');
 	require('../config/constants.php');
 
@@ -9,18 +9,63 @@ if ( !isset( $_POST['bearbeitenSubmit'] ) ) {
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
+	
+	include("dbConnection.class.php");
+	
+	//Benutzerdaten auslesen
+	$sqlSelect = "SELECT * FROM beitrag WHERE bid = 2";//. $_POST['bid'];
+	$stmt = mysqli_query($conn, $sqlSelect);
+	$singleRow = mysqli_fetch_assoc($stmt);
 
-	$smarty->assign('titel', 'Gulasch');
-	$smarty->assign('btext', 'seife,Schampoo');
-	//Hier muss bei dem string zuerst die ü´s in und uumls umgewandelt werden
-	$kname=str_replace("ü", "&uuml;", "kname");
+	$smarty->assign('titel', $singleRow['titel']);
+	$smarty->assign('btext', $singleRow['btext']);
+	//Hier muss bei dem string zuerst die ï¿½ï¿½s in und uumls umgewandelt werden
+	$kname=str_replace("Ã¼", "&uuml;", $singleRow['kname']);
 	$smarty->assign('kname', $kname);
-	$smarty->assign('bild', '/image/');
-	$smarty->assign('zutaten', 'sehr gut rühren');
-	$smarty->assign('portion', '5');
+	$smarty->assign('bild', $singleRow['bild']);
+	$smarty->assign('zutaten', $singleRow['zutaten']);
+	$smarty->assign('portion', $singleRow['portion']);
 	$smarty->display('rezeptBearbeiten.tpl');
-}else{
-	//Speichern der ändernungen und weiterleiten zu Meine Daten
+}
+elseif ( isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
+	
+	//Bild auf den Server hochladen
+	$verzeichnis = "C:/Users/markus/Desktop/uploadServer/rezeptbilder/";
+	
+	if ($_FILES['bild']['name']!= null)	{
+		$dateityp = GetImageSize($_FILES['bild']['tmp_name']);
+		if($dateityp[2] != 0) {  //handelt es sich um ein Bild
+			if($_FILES['bild']['size'] <  5242880) {  //ist das Bild kleiner als 5 MB
+				move_uploaded_file($_FILES['bild']['tmp_name'], $verzeichnis . $_POST['titel']. ".jpg");
+				echo "Das Bild wurde Erfolgreich nach upload/".$_FILES['bild']['name']." hochgeladen";
+			}
+			else
+				echo "Das Bild darf nicht grÃ¶ÃŸer als 5 MB sein.";
+		} else
+			echo "Es handelt sich nicht um eine gif bzw. jpg Datei.";
+	} else
+		echo "Es wurde kein Rezeptbild angegeben.";
+	
+	
+	//Speichern der Ã„ndernungen und weiterleiten zu Meine Daten
+	include("dbConnection.class.php");
+	
+	//Benutzer Ã„ndern
+	$sqlUpdate = "UPDATE beitrag SET titel = '".$_POST['titel']."',
+									 btext = '".$_POST['btext']."',";
+	
+	if ($_FILES['bild']['name']!= null)
+		$sqlUpdate .= "bild = '".$_POST['titel'].".jpg',";
+		
+	$sqlUpdate .= "zutaten = '".$_POST['zutaten']."',
+				   portion = '".$_POST['portion']."'
+				   WHERE bid = 2";
+	
+	if ($conn->query($sqlUpdate) === false)
+		echo "Ein Fehler ist beim Updaten aufgetretten: " . $conn->error;
+	
+	mysqli_close($conn);
+	
 	
 	header("Location: meineRezepte.class.php");
 }
