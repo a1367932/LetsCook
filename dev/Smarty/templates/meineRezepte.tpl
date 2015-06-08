@@ -16,13 +16,14 @@
 	var ausgabe="as";
 		for (var i = 0; i <= {$bild}.length; i++){
 			ausgabe=ausgabe+'<tr>
+					<input type="hidden" name="bid" value="{$bid['+i+']}">
 					<td><img src="{$bild['+i+']}" alt="RezeptBild"></td>
 				</tr>
 				<tr>
 					<td>{$titel['+i+']}</td>
 				</tr>
 				<tr>
-					<td><td><input type="submit" name="meineRezepteSubmit" value="Bearbeiten"></td></td>
+					<td><td><input type="submit" name="reazeptBearbeitenSubmit" value="Bearbeiten"></td></td>
 				</tr>
 				<tr>
 					<td><a href="rezeptloeschen.class.php?bild={$bild['+i+']}">X</a></td></td>
