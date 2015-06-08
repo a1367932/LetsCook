@@ -44,5 +44,6 @@
 			<td><td><input type="submit" name="meineDatenSubmit" value="Daten &Auml;ndern"></td></td>
 		</tr>
 	</table>
+	</form>
 </body>
 </html>
