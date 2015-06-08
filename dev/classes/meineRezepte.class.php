@@ -19,6 +19,10 @@ if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 			'Rezepttitel 1',
 			'Rezepttitel 2 usw.',
 	));
+	$smarty->assign('bid', array(
+			'bid 1',
+			'bid 2 usw.',
+	));
 	
 	$smarty->display('meineRezepte.tpl');
 }else{
