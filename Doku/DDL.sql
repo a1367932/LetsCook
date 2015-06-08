@@ -28,7 +28,7 @@ CREATE TABLE beitrag (
 	bname		VARCHAR(200) 		NOT NULL,
 	title		VARCHAR(250) 		NOT NULL,
 	bdatum		DATE				NOT NULL,
-	text		TEXT				NOT NULL,
+	btext		TEXT				NOT NULL,
 	bild		VARCHAR(250)		NOT NULL,
 	zutaten		VARCHAR(250)		NOT NULL,
 	portion		INTEGER				NOT NULL,
@@ -68,9 +68,14 @@ CREATE TABLE bewertung (
 
 -- Inserts:
 INSERT INTO benutzer VALUES('ms', 'ms@hotmail.com', 'ms', 'markus', 'seabrooker', '2015-06-09', 'Jägerstrasse', '123', 1130, 'Wien', 'Austria', 'm', null);
-INSERT INTO kategorie VALUES ('Mehlspeisen', 'mehlspeisen.jpg', 'Lecker lecker Mehlspeisen');
-INSERT INTO beitrag(bname, title, bdatum, text, bild, zutaten, portion, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Schoko, Mehl, Zucker', 2, 'Mehlspeisen');
-INSERT INTO beitrag(bname, title, bdatum, text, bild, zutaten, portion, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Schoko, Mehl, Zucker', 2, 'Mehlspeisen');
+INSERT INTO kategorie VALUES ('Frühstück', 'fruestueck.jpg', 'Lecker lecker Fruestueck');
+INSERT INTO kategorie VALUES ('Vorspeise', 'vorspeise.jpg', 'Lecker lecker Vorspeise');
+INSERT INTO kategorie VALUES ('Hauptspeise', 'hauptspeise.jpg', 'Lecker lecker Hauptspeise');
+INSERT INTO kategorie VALUES ('Dessert', 'dessert.jpg', 'Lecker lecker Dessert');
+INSERT INTO kategorie VALUES ('Beilage', 'beilage.jpg', 'Lecker lecker Beilage');
+INSERT INTO kategorie VALUES ('Salat', 'salat.jpg', 'Lecker lecker Salat');
+INSERT INTO beitrag(bname, title, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', 'Schokoladenkuchen', SYSDATE(), 'Lecker Lecker Schoko', 'schoko.jpg', 'Schoko, Mehl, Zucker', 2, 'Dessert');
+INSERT INTO beitrag(bname, title, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', 'Bananenkuchen', SYSDATE(), 'Lecker Lecker Banane', 'banane.jpg', 'Schoko, Mehl, Zucker', 2, 'Dessert');
 INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!'); 
 INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), 'Der Kuchen ist wirklich supa!', 1); 
 INSERT INTO erstellt VALUES (1, 1, 'ms');

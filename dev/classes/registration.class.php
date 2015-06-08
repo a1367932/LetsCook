@@ -36,7 +36,7 @@ elseif ( isset( $_POST['registrationSubmit'] ) ){
 	}
 	
 	//Bild auf den Server hochladen
-	$verzeichnis = "C:/Users/markus/Desktop/uploadServer/";
+	$verzeichnis = "C:/Users/markus/Desktop/uploadServer/profilbilder/";
 	
 	if ($_FILES['bbild']['name']!= null)	{
 		$dateityp = GetImageSize($_FILES['bbild']['tmp_name']);
