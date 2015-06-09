@@ -1,15 +1,19 @@
 <?php
-
-if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 	require('../Smarty/libs/Smarty.class.php');
 	require('../config/constants.php');
-
 	$smarty = new Smarty();
-
 	$smarty->setTemplateDir('../Smarty/templates');
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
+	include("dbConnection.class.php");
+	$smarty->display('meineRezepte.tpl');
+	session_start();
+?>
+
+<?php
+
+if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 
 	$smarty->assign('bild', array(
 			'pfad zum Rezeptbild 1',
@@ -24,7 +28,7 @@ if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 			'bid 2 usw.',
 	));
 	
-	$smarty->display('meineRezepte.tpl');
+	
 }else{
 	header("Location: rezepteBearbeiten.class.php");
 }

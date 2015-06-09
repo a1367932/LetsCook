@@ -2,7 +2,6 @@
 <script src="src/foundation/js/vendor/fastclick.js"></script>
 <script src="js/foundation.min.js"></script>
 
-<div class="container">
   <div class="row">
 	<div class="large-12 columns">
 	  <div class="panel">

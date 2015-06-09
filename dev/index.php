@@ -10,8 +10,17 @@ $smarty->setCompileDir('Smarty/templates_c');
 $smarty->setCacheDir('Smarty/cache');
 $smarty->setConfigDir('Smarty/configs');
 
-$smarty->assign('name', 'Ned');
 $smarty->assign('login', 'false');
+
+	session_start();
+	if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
+		$smarty->assign('session', 'true');
+	}
+	else{
+		$smarty->assign('session', 'false');
+	}
 $smarty->display('index.tpl');
 
 ?>
+
+

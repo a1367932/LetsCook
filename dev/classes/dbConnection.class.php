@@ -1,9 +1,9 @@
 <?php
 
 	$servername = "localhost";
-	$username = "";
+	$username = "root";
 	$password = "";
-	$database = "test";
+	$database = "is-forum";
 	
 	// erzeugt die DB-Verbindung
 	$conn = new mysqli($servername, $username, $password, $database);

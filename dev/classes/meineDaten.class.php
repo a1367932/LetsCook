@@ -1,20 +1,23 @@
 <?php
-
-if ( !isset( $_POST['meineDatenSubmit'] ) ) {
 	require('../Smarty/libs/Smarty.class.php');
 	require('../config/constants.php');
-
 	$smarty = new Smarty();
-
 	$smarty->setTemplateDir('../Smarty/templates');
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
 
+	session_start();
+?>
+
+<?php
+
+if ( !isset( $_POST['meineDatenSubmit'] ) ) {
+
 	include("dbConnection.class.php");
 	
 	//Benutzerdaten auslesen
-	$sqlSelect = "SELECT * FROM benutzer WHERE bname = 'ms'";
+	$sqlSelect = "SELECT * FROM benutzer WHERE bname = '".$_SESSION['bid']."'";
 	$stmt = mysqli_query($conn, $sqlSelect);
 	$singleRow = mysqli_fetch_assoc($stmt);
 	

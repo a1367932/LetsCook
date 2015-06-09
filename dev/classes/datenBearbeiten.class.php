@@ -1,20 +1,22 @@
 <?php
-if ( !isset( $_POST['bearbeitenSubmit'] ) ) {
 	require('../Smarty/libs/Smarty.class.php');
 	require('../config/constants.php');
-
 	$smarty = new Smarty();
-
 	$smarty->setTemplateDir('../Smarty/templates');
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
-	
-	
 	include("dbConnection.class.php");
+
+	session_start();
+?>
+
+<?php
+if ( !isset( $_POST['bearbeitenSubmit'] ) ) {
+	
 	
 	//Benutzerdaten auslesen
-	$sqlSelect = "SELECT * FROM benutzer WHERE bname = 'ms'";
+	$sqlSelect = "SELECT * FROM benutzer WHERE bname = '".$_SESSION['bid']."'";
 	$stmt = mysqli_query($conn, $sqlSelect);
 	$singleRow = mysqli_fetch_assoc($stmt);
 
@@ -32,7 +34,7 @@ if ( !isset( $_POST['bearbeitenSubmit'] ) ) {
 }
 elseif ( isset( $_POST['bearbeitenSubmit'] ) ){
 	//Speichern der Ändernungen und weiterleiten zu Meine Daten
-	include("dbConnection.class.php");
+
 	
 	//Benutzer Ändern
 	$sqlUpdate = "UPDATE benutzer SET email = '".$_POST['email']."', 
@@ -44,7 +46,7 @@ elseif ( isset( $_POST['bearbeitenSubmit'] ) ){
 									  plz = ".$_POST['plz'].", 
 									  ort = '".$_POST['ort']."', 
 									  land = '".$_POST['land']."' 
-									  WHERE bname = 'ms'";
+									  WHERE bname = '".$_SESSION['bid']."'";
 	
 	if ($conn->query($sqlUpdate) === false)
 		echo "Ein Fehler ist beim Updaten aufgetretten: " . $conn->error;

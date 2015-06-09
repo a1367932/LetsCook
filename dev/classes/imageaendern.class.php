@@ -1,19 +1,19 @@
 <?php
-
-if ( !isset( $_POST['imageaendernSubmit'] ) ) {
 	require('../Smarty/libs/Smarty.class.php');
 	require('../config/constants.php');
-
 	$smarty = new Smarty();
-
 	$smarty->setTemplateDir('../Smarty/templates');
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
-
+	include("dbConnection.class.php");
 	$smarty->display('imageaendern.tpl');
-}
-elseif( isset( $_POST['imageaendernSubmit'] ) ){
+	session_start();
+?>
+
+
+<?php
+if( isset( $_POST['imageaendernSubmit'] ) ){
 	//Neues Image Speichern
 	//und kehre zu MEINE DATEN zurück
 	//Bild auf den Server hochladen
@@ -37,7 +37,7 @@ elseif( isset( $_POST['imageaendernSubmit'] ) ){
 	include("dbConnection.class.php");
 	
 	//Benutzer Ändern
-	$sqlUpdate = "UPDATE benutzer SET bbild = 'ms.jpg' WHERE bname = 'ms'"; //TODO $_SESSION['bname']
+	$sqlUpdate = "UPDATE benutzer SET bbild = 'ms.jpg' WHERE bname = '".$_SESSION['bid']."'"; 
 	
 	if ($conn->query($sqlUpdate) === false)
 		echo "Ein Fehler ist beim Updaten aufgetretten: " . $conn->error;

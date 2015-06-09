@@ -1,26 +1,27 @@
 <?php
-
-if ( !isset( $_POST['neuesRezeptSubmit'] ) ) {
 	require('../Smarty/libs/Smarty.class.php');
 	require('../config/constants.php');
-	
 	$smarty = new Smarty();
-	
 	$smarty->setTemplateDir('../Smarty/templates');
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
-	
 	$smarty->display('neuesRezept.tpl');
-}
-elseif ( isset( $_POST['neuesRezeptSubmit'] ) ) {
-	//Speichern und weiterleiten zu Meine rezepte
-	
+	session_start();
+		
 	include("dbConnection.class.php");
+?>
+
+<?php
+
+if ( isset( $_POST['neuesRezeptSubmit'] ) ) {
+	//Speichern und weiterleiten zu Meine rezepte
 	
 	//Rezept speichern
 	//TODO $_Session['bname']
-	$sqlInsert = "INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname) VALUES ('ms', '".$_POST['titel']."', SYSDATE(), '".$_POST['btext']."', '".$_POST['titel'].".jpg', '".$_POST['zutaten']."', ".$_POST['portion'].", '".$_POST['kname']."')";
+	$sqlInsert = "INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname)
+	VALUES ('".$_SESSION['bid']."', '".$_POST['titel']."', SYSDATE(), '".$_POST['btext']."', '".$_POST['titel'].".jpg',
+	'".$_POST['zutaten']."', ".$_POST['portion'].", '".$_POST['kname']."')";
 	
 	//SQL - Anweisung ausführen
 	if (mysqli_query($conn, $sqlInsert)) {
