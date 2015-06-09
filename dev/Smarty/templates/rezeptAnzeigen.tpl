@@ -26,12 +26,10 @@
 			<td>Zutaten:</td>
 			<td>{$zutaten}</td>
 		</tr>
-		<tr>
-			<td>{$alter}</td>
-		</tr>
+		
 		<tr>
 			<td>Zubereitung:</td>
-			<td>btext</td>
+			<td>{$btext}</td>
 		</tr>
 	</table>
 	</form>
