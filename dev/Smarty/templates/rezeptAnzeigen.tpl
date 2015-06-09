@@ -15,7 +15,7 @@
 			<td><img src="{$bild}" alt="Rezeptbild"></td>
 		</tr>
 		<tr>
-			<td>{$durchschnittBewertungen}</td>
+			<td>{$durchschnittBewertungen} in Prozent</td>
 		</tr>
 		<tr>
 			<td>{$portion} Portionen</td>
@@ -32,6 +32,5 @@
 			<td>{$btext}</td>
 		</tr>
 	</table>
-	</form>
 </body>
 </html>

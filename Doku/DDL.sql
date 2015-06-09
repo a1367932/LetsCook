@@ -80,6 +80,7 @@ INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!');
 INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), 'Der Kuchen ist wirklich supa!', 1); 
 INSERT INTO erstellt VALUES (1, 1, 'ms');
 INSERT INTO bewertung(anzahl, wert, bid) VALUES (1, 5, 1);
+INSERT INTO bewertung(anzahl, wert, bid) VALUES (1, 2, 1);
 
 DROP TABLE bewertung;
 DROP TABLE erstellt;
