@@ -26,6 +26,19 @@
 	$smarty->assign('portion', $singleRow['portion']);
 	$smarty->assign('zutaten', $singleRow['zutaten']);
 	$smarty->assign('btext', $singleRow['btext']);
+	
+	
+// 	//Kommentare auslesen
+// 	$sqlSelect = "SELECT kid, bname, kdatum, ktext FROM erstellt 
+// 				  NATURAL JOIN beitrag
+// 				  NATURAL JOIN kommentar
+// 				  WHERE bid = 1";
+	
+// 	//Kommentar vom Kommentar auslesen
+// 	$sqlSelect = "SELECT * FROM kommentar
+// 				  WHERE ukid = 1";
+	
+	
 	$smarty->display('rezeptAnzeigen.tpl');
 	
 	mysqli_close($conn);
