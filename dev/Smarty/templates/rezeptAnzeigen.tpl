@@ -12,7 +12,7 @@
 	<h1>{$titel}</h1>
 	<table>
 		<tr>
-			<td><img src="{$bild}" alt="Rezeptbild"></td>
+			<td><img src="../../Uploads/{$bild[rezepte]}" alt="Rezeptbild" height="150" width="150"></td>
 		</tr>
 		<tr>
 			<td>{$durchschnittBewertungen} in Prozent</td>

@@ -15,8 +15,16 @@
 	//Rezeptdaten der jeweilingen Kategorie auslesen
 	$sqlSelect = "SELECT * FROM beitrag WHERE kname= '". $_GET['kategorie'] ."'";
 	$stmt = mysqli_query($conn, $sqlSelect);
-	$singleRow = mysqli_fetch_assoc($stmt);
-
+	//$singleRow = mysqli_fetch_assoc($stmt);
+	while($row = mysqli_fetch_array($stmt))
+	{
+		$titel[] = $row['titel'];
+		$bild[] = $row['bild'];
+		$btext[] = $row['btext'];
+		$bid[] = $row['bid'];
+		//$bewertung[] = $row['bewertung'];
+		$bewertung[]=0;
+	}
 // 	$smarty->assign('titel', $singleRow['titel']);
 // 	$smarty->assign('bild', $singleRow['bild']);
 // 	$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
@@ -29,25 +37,11 @@
 		//$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
 	//}else 	$smarty->assign('durchschnittBewertungen', 0);
 	
-	$smarty->assign('bild', array(
-			$singleRow['bild'],
-			'pfad zum Rezeptbild 2 usw.',
-	));
-	$smarty->assign('titel', array(
-			$singleRow['titel']
-	));
-	$smarty->assign('bewertung', array(
-			'10 punkte',
-			'2 sterne',
-	));
-	$smarty->assign('btext', array(
-			$singleRow['btext'],
-			'Machen sie sich eine Tasse ',
-	));
-	$smarty->assign('bid', array(
-			'1',
-			'2',
-	));
+	$smarty->assign('bild', $bild);
+	$smarty->assign('titel', $titel);
+	$smarty->assign('bewertung', $bewertung);
+	$smarty->assign('btext', $btext);
+	$smarty->assign('bid', $bid);
 	
 	$smarty->display('rezepteKategorieAnzeigen.tpl');
 	

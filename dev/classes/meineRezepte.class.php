@@ -14,28 +14,42 @@
 
 if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 
-	$smarty->assign('bild', array(
-			'pfad zum Rezeptbild 1',
-			'pfad zum Rezeptbild 2 usw.',
-			));
-	$smarty->assign('titel', array(
-			'Rezepttitel 1',
-			'Rezepttitel 2 usw.',
-	));
-	$smarty->assign('bewertung', array(
-			'10 punkte',
-			'2 sterne',
-	));
-	$smarty->assign('btext', array(
-			'Kochen Sie die shocko und seife',
-			'Machen sie sich eine Tasse ',
-	));
-	$smarty->assign('bid', array(
-			'1',
-			'2',
-	));
-
+	include("dbConnection.class.php");
+	
+	//Rezeptdaten der jeweilingen Kategorie auslesen
+	$sqlSelect = "SELECT * FROM beitrag WHERE bname = '".$_SESSION['bid']."'";
+	$stmt = mysqli_query($conn, $sqlSelect);
+	//$singleRow = mysqli_fetch_assoc($stmt);
+	while($row = mysqli_fetch_array($stmt))
+	{
+		$titel[] = $row['titel'];
+		$bild[] = $row['bild'];
+		$btext[] = $row['btext'];
+		$bid[] = $row['bid'];
+		//$bewertung[] = $row['bewertung'];
+		$bewertung[]=0;
+	}
+	// 	$smarty->assign('titel', $singleRow['titel']);
+	// 	$smarty->assign('bild', $singleRow['bild']);
+	// 	$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
+	// 	$smarty->assign('portion', $singleRow['portion']);
+	// 	$smarty->assign('zutaten', $singleRow['zutaten']);
+	// 	$smarty->assign('btext', $singleRow['btext']);
+	// 	$smarty->display('rezeptAnzeigen.tpl');
+	
+	//if($singleRow['anzahlBewertung'] != 0){
+	//$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
+	//}else 	$smarty->assign('durchschnittBewertungen', 0);
+	
+	$smarty->assign('bild', $bild);
+	$smarty->assign('titel', $titel);
+	$smarty->assign('bewertung', $bewertung);
+	$smarty->assign('btext', $btext);
+	$smarty->assign('bid', $bid);
+	
 	$smarty->display('meineRezepte.tpl');
+	
+	mysqli_close($conn);
 	
 }else{
 	header("Location: rezepteBearbeiten.class.php");

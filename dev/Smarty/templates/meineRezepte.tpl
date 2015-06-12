@@ -47,7 +47,7 @@
 		<a href="rezeptAnzeigen.class.php?bid={$bid[rezepte]}">
 		<table>
 			<tr>
-				<td> {$bild[rezepte]}</td>
+				<td><img src="../../Uploads/{$bild[rezepte]}" alt="Rezeptbild" height="150" width="150"></td>
 				<td> {$titel[rezepte]}</td>
 			</tr>
 			<tr>
