@@ -7,7 +7,6 @@
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
 	include("dbConnection.class.php");
-	$smarty->display('meineRezepte.tpl');
 	session_start();
 ?>
 
@@ -23,11 +22,20 @@ if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 			'Rezepttitel 1',
 			'Rezepttitel 2 usw.',
 	));
-	$smarty->assign('bid', array(
-			'bid 1',
-			'bid 2 usw.',
+	$smarty->assign('bewertung', array(
+			'10 punkte',
+			'2 sterne',
 	));
-	
+	$smarty->assign('btext', array(
+			'Kochen Sie die shocko und seife',
+			'Machen sie sich eine Tasse ',
+	));
+	$smarty->assign('bid', array(
+			'1',
+			'2',
+	));
+
+	$smarty->display('meineRezepte.tpl');
 	
 }else{
 	header("Location: rezepteBearbeiten.class.php");

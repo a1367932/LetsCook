@@ -10,19 +10,22 @@
 	$smarty->setConfigDir('../Smarty/configs');
 	
 	
-	include("dbConnection.class.php");
 	
+	include("dbConnection.class.php");
+
 	//Rezeptdaten auslesen
 	$sqlSelect = "SELECT titel, btext, bild, zutaten, portion, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung 
 				  FROM beitrag NATURAL JOIN bewertung 
-				  WHERE bid = 1 
+				  WHERE bid ='".$_GET['bid']."'
 			      GROUP BY bid";
 	$stmt = mysqli_query($conn, $sqlSelect);
 	$singleRow = mysqli_fetch_assoc($stmt);
 
 	$smarty->assign('titel', $singleRow['titel']);
 	$smarty->assign('bild', $singleRow['bild']);
-	$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
+	if($singleRow['anzahlBewertung'] != 0){
+		$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
+	}else 	$smarty->assign('durchschnittBewertungen', 0);
 	$smarty->assign('portion', $singleRow['portion']);
 	$smarty->assign('zutaten', $singleRow['zutaten']);
 	$smarty->assign('btext', $singleRow['btext']);

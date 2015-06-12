@@ -42,30 +42,22 @@
 	<div class="large-12 columns">
 	  <div class="panel">
 	<form action="meineRezepte.class.php" method="POST">
+		
+		{section name=rezepte loop=$titel}
+		<a href="rezeptAnzeigen.class.php?bid={$bid[rezepte]}">
 		<table>
-		<!-- Anzeigen der Liste (Smarty array)
-	<script type="text/javascript">
-	var ausgabe="as";
-		for (var i = 0; i <= {$bild}.length; i++){
-			ausgabe=ausgabe+'<tr>
-					<input type="hidden" name="bid" value="{$bid['+i+']}">
-					<td><img src="{$bild['+i+']}" alt="RezeptBild"></td>
-				</tr>
-				<tr>
-					<td>{$titel['+i+']}</td>
-				</tr>
-				<tr>
-					<td><td><input type="submit" name="reazeptBearbeitenSubmit" value="Bearbeiten"></td></td>
-				</tr>
-				<tr>
-					<td><a href="rezeptloeschen.class.php?bild={$bild['+i+']}">X</a></td></td>
-				</tr>
-			';
-		}
-		document.write(ausgabe);
-	</script>
-	 -->
+			<tr>
+				<td> {$bild[rezepte]}</td>
+				<td> {$titel[rezepte]}</td>
+			</tr>
+			<tr>
+				<td> {$bewertung[rezepte]}</td>
+				<td> {$btext[rezepte]}</td>	
+			</tr>
 		</table>
+		</a>
+	    {/section}
+	
 	</form>
 	  </div></div></div>
 </body>
