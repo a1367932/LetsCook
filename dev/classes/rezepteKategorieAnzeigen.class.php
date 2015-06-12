@@ -25,8 +25,30 @@
 // 	$smarty->assign('btext', $singleRow['btext']);
 // 	$smarty->display('rezeptAnzeigen.tpl');
 
-	$smarty->assign('data',array(1,2,3,4,5,6,7,8,9));
-	$smarty->assign('tr',array('bgcolor="#eeeeee"','bgcolor="#dddddd"'));
+	//if($singleRow['anzahlBewertung'] != 0){
+		//$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
+	//}else 	$smarty->assign('durchschnittBewertungen', 0);
+	
+	$smarty->assign('bild', array(
+			$singleRow['bild'],
+			'pfad zum Rezeptbild 2 usw.',
+	));
+	$smarty->assign('titel', array(
+			$singleRow['titel']
+	));
+	$smarty->assign('bewertung', array(
+			'10 punkte',
+			'2 sterne',
+	));
+	$smarty->assign('btext', array(
+			$singleRow['btext'],
+			'Machen sie sich eine Tasse ',
+	));
+	$smarty->assign('bid', array(
+			'1',
+			'2',
+	));
+	
 	$smarty->display('rezepteKategorieAnzeigen.tpl');
 	
 	mysqli_close($conn);

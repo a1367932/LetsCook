@@ -42,9 +42,20 @@
    <div class="row">
    		<div class="large-12 columns">
 			<div class="panel">
-				{html_table loop=$data}
-				{html_table loop=$data cols=4 table_attr='border="0"'}
-				{html_table loop=$data cols=4 tr_attr=$tr}
+				{section name=rezepte loop=$titel}
+				<a href="rezeptAnzeigen.class.php?bid={$bid[rezepte]}">
+				<table>
+					<tr>
+						<td> <img src="../../Uploads/{$bild[rezepte]}" alt="Profilbild" height="150" width="150"></td>
+						<td> {$titel[rezepte]}</td>
+					</tr>
+					<tr>
+						<td> {$bewertung[rezepte]}</td>
+						<td> {$btext[rezepte]}</td>	
+					</tr>
+				</table>
+				</a>
+	    		{/section}
 	
 			</div>
 		</div>
