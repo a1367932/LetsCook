@@ -47,31 +47,31 @@
 	<table>
 		<tr>
 			<td>Vorname</td>
-			<td><input type="text" name="vorname" value="{$vorname}" ></td>
+			<td><input type="text" name="vorname" value="{$vorname}" required="required"></td>
 		</tr>
 		<tr>
 			<td>Nachname</td>
-			<td><input type="text" name="nachname" value="{$nachname}"></td>
+			<td><input type="text" name="nachname" value="{$nachname}" required="required"></td>
 		</tr>
 		<tr>
 			<td>Adresse</td>
-			<td><input type="text" name="strasse" value="{$strasse}"></td>
-			<td><input type="text" name="nummer" value="{$nummer}"></td>
-			<td><input type="text" name="plz" value="{$plz}"></td>
-			<td><input type="text" name="ort" value="{$ort}"></td>
-			<td><input type="text" name="land" value="{$land}"></td>
+			<td><input type="text" name="strasse" value="{$strasse}" required="required"></td>
+			<td><input type="text" name="nummer" value="{$nummer}" required="required"></td>
+			<td><input type="text" name="plz" value="{$plz}" required="required"></td>
+			<td><input type="text" name="ort" value="{$ort}" required="required"></td>
+			<td><input type="text" name="land" value="{$land}" required="required"></td>
 		</tr>
 		<tr>
 			<td>Nutzerdaten</td>
 		</tr>
 		<tr>
 			<td>Passwort</td>
-			<td><input type="password" name="passwort"></td>
-			<td><input type="password" name="passwort2"></td>
+			<td><input type="password" name="passwort" required="required"></td>
+			<td><input type="password" name="passwort2" required="required"></td>
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td><input type="email" name="email" value="{$email}"></td>
+			<td><input type="email" name="email" value="{$email}" required="required"></td>
 		</tr>
 		<tr>
 			<td><input type="submit" name="bearbeitenSubmit" value="Absenden"></td>

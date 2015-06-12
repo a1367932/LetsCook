@@ -45,7 +45,7 @@
 	<form action="meineDaten.class.php" method="POST">
 	<table>
 		<tr>
-			<td><img src="{$bbild}" alt="Profilbild"></td>
+			<td><img src="../../Uploads/{$bbild}" alt="Profilbild" height="150" width="150"></td>
 		</tr>
 		<tr>
 			<td>{$bname}</td>
