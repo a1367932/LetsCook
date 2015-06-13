@@ -15,7 +15,7 @@
 
 	//Rezeptdaten auslesen
 	$sqlSelect = "SELECT titel, btext, bild, zutaten, portion, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung 
-				  FROM beitrag NATURAL JOIN bewertung 
+				  FROM beitrag NATURAL LEFT OUTER JOIN bewertung 
 				  WHERE bid ='".$_GET['bid']."'
 			      GROUP BY bid";
 	$stmt = mysqli_query($conn, $sqlSelect);
@@ -25,21 +25,24 @@
 	$smarty->assign('bild', $singleRow['bild']);
 	if($singleRow['anzahlBewertung'] != 0){
 		$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
-	}else 	$smarty->assign('durchschnittBewertungen', 0);
+	}
+	else 	
+		$smarty->assign('durchschnittBewertungen', 0);
+	
 	$smarty->assign('portion', $singleRow['portion']);
 	$smarty->assign('zutaten', $singleRow['zutaten']);
 	$smarty->assign('btext', $singleRow['btext']);
 	
 	
-// 	//Kommentare auslesen
-// 	$sqlSelect = "SELECT kid, bname, kdatum, ktext FROM erstellt 
-// 				  NATURAL JOIN beitrag
-// 				  NATURAL JOIN kommentar
-// 				  WHERE bid = 1";
+	//Kommentare auslesen
+	$sqlSelect = "SELECT kid, bname, kdatum, ktext FROM erstellt 
+				  NATURAL JOIN beitrag
+				  NATURAL JOIN kommentar
+				  WHERE bid = 1";
 	
-// 	//Kommentar vom Kommentar auslesen
-// 	$sqlSelect = "SELECT * FROM kommentar
-// 				  WHERE ukid = 1";
+	//Kommentar vom Kommentar auslesen
+	$sqlSelect = "SELECT * FROM kommentar
+				  WHERE ukid = 1";
 	
 	
 	$smarty->display('rezeptAnzeigen.tpl');
