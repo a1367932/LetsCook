@@ -95,9 +95,13 @@ INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname) 
 INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname) VALUES ('Max', 'Erdäpfelsalat ', SYSDATE(), 'Lecker Lecker erdige Äpfel', 'Erdäpfelsalat.jpg', 'Schoko, Mehl, Zucker', 1, 'Beilage');
 INSERT INTO beitrag(bname, titel, bdatum, btext, bild, zutaten, portion, kname) VALUES ('Max', 'Steirischer Krautsalat', SYSDATE(), 'Lecker Lecker Steiermark', 'Steirischer Krautsalat.jpg', 'Schoko, Mehl, Zucker', 1, 'Salat');
 
-INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!'); 
+INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Schmeckt etwas langweilig!'); 
+INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), 'Echt supa Kuchen!');
+
 INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), 'Der Kuchen ist wirklich supa!', 1); 
 INSERT INTO erstellt VALUES (1, 1, 'Max');
+INSERT INTO erstellt VALUES (1, 2, 'Max');
+INSERT INTO erstellt VALUES (1, 3, 'Max');
 INSERT INTO bewertung(anzahl, wert, bid) VALUES (1, 5, 1);
 INSERT INTO bewertung(anzahl, wert, bid) VALUES (1, 2, 1);
 
