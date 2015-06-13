@@ -44,7 +44,8 @@
 	
 	//Kommentar vom Kommentar auslesen
 	$sqlSelect = "SELECT * FROM kommentar
-				  WHERE ukid ='".$_GET['bid']."'";
+				  WHERE ukid =1";
+	$stmt2 = mysqli_query($conn, $sqlSelect);
 	
 	//Kommentar Arrays
 	$kommentare = array(
@@ -62,13 +63,23 @@
 	
 	while($row = mysqli_fetch_array($stmt))
 	{
-		$kid[] = $row['titel'];
-		$bname[] = $row['bild'];
-		$kdatum[] = $row['bdatum'];
+		$kid[] = $row['kid'];
+		$bname[] = $row['bname'];
+		$kdatum[] = $row['kdatum'];
+	}
+	while($row2 = mysqli_fetch_array($stmt2))
+	{
+		$kidu[] = $row2['kid'];
+		$bnameu[] = $row2['bname'];
+		$kdatumu[] = $row2['kdatum'];
 	}
 	
-	$smarty->assign('titel', $titel);
-	$smarty->assign('titel', $titel);
+	$smarty->assign('kid', $kid);
+	$smarty->assign('bname', $bname);
+	$smarty->assign('kdatum', $kdatum);
+	$smarty->assign('kidu', $kidu);
+	$smarty->assign('bnameu', $bnameu);
+	$smarty->assign('kdatumu', $kdatumu);
 	$smarty->assign("kommentare", $kommentare);
 	
 	
