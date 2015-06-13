@@ -38,11 +38,11 @@
 	$sqlSelect = "SELECT kid, bname, kdatum, ktext FROM erstellt 
 				  NATURAL JOIN beitrag
 				  NATURAL JOIN kommentar
-				  WHERE bid = 1";
+				  WHERE bid ='".$_GET['bid']."'";
 	
 	//Kommentar vom Kommentar auslesen
 	$sqlSelect = "SELECT * FROM kommentar
-				  WHERE ukid = 1";
+				  WHERE ukid ='".$_GET['bid']."'";
 	
 	//Kommentar Arrays
 	$kommentare = array(
