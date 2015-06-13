@@ -49,6 +49,6 @@ if ( isset( $_POST['neuesRezeptSubmit'] ) ) {
 	
 	mysqli_close($conn);
 	
-	header("Location: meineRezepte.class.php");
+// 	header("Location: meineRezepte.class.php");
 }
 ?>

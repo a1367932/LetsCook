@@ -38,7 +38,7 @@ if( isset( $_POST['imageaendernSubmit'] ) ){
 	include("dbConnection.class.php");
 	
 	//Benutzer Ändern
-	$sqlUpdate = "UPDATE benutzer SET bbild = 'ms.jpg' WHERE bname = '".$_SESSION['bid']."'"; 
+	$sqlUpdate = "UPDATE benutzer SET bbild = '". $_SESSION['bid'] .".jpg' WHERE bname = '".$_SESSION['bid']."'"; 
 	
 	if ($conn->query($sqlUpdate) === false)
 		echo "Ein Fehler ist beim Updaten aufgetretten: " . $conn->error;
@@ -46,7 +46,7 @@ if( isset( $_POST['imageaendernSubmit'] ) ){
 	mysqli_close($conn);
 	
 	
-// 	header("Location: meineDaten.class.php");
+	header("Location: meineDaten.class.php");
 }
 
 ?>

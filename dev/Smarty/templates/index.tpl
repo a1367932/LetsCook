@@ -50,7 +50,7 @@
 				  <tbody>
 					<tr>
 					  <td><img src="/fruestueck.jpg" alt="Fr&uuml;st&uuml;ck"></td>
-					  <td width="50%"><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Fr�hst�ck&von=0&bis=10">Fr&uuml;st&uuml;ck</a></td>
+					  <td width="50%"><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Fr&uuml;hst&uuml;ck&von=0&bis=10">Fr&uuml;st&uuml;ck</a></td>
 					  <td width="50px">0</td>
 					   <td><img src="/vorspeise.jpg" alt="Vorspeise"></td>
 					  <td width="50%"><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Vorspeise&von=0&bis=10">Vorspeise</td>
