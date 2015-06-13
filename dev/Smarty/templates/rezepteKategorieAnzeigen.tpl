@@ -42,21 +42,34 @@
    <div class="row">
    		<div class="large-12 columns">
 			<div class="panel">
-				{section name=rezepte loop=$titel}
-				<a href="rezeptAnzeigen.class.php?bid={$bid[rezepte]}">
+				
 				<table>
-					<tr>
-						<td> <img src="../../Uploads/{$bild[rezepte]}" alt="Profilbild" height="150" width="150"></td>
-						<td> {$titel[rezepte]}</td>
-					</tr>
-					<tr>
-						<td> {$bewertung[rezepte]}</td>
-						<td> {$btext[rezepte]}</td>	
-					</tr>
-				</table>
-				</a>
-	    		{/section}
-	
+					<thead>
+						<tr>
+			     			<th width="20%">Bild</th>
+	     					<th width="65%">Name / Wertung</th>
+	     					<th width="15%">Datum</th>
+	 			 		</tr>
+ 					</thead>
+ 				</table>
+ 				
+ 				<!-- Tabelle der Rezepte wird erzgeugt -->
+ 				{section name=rezepte loop=$titel}
+ 					<a href="rezeptAnzeigen.class.php?bid={$bid[rezepte]}">
+		 				<table>
+		 					<tbody>
+			 					<tr>
+									<td width="20%"><img src="../../Uploads/{$bild[rezepte]}" alt="Profilbild" height="150" width="150"></td>
+									<td width="65%">{$titel[rezepte]} <br/> 
+													bewertung
+									</td>
+									<td width="15%"> {$bdatum[rezepte]}</td>
+								</tr>		
+					    	</tbody>
+						</table>
+					</a>
+				{/section}
+			
 			</div>
 		</div>
 	</div>

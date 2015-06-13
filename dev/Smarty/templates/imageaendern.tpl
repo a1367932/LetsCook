@@ -52,7 +52,7 @@
 			<td><td><input type="submit" name="imageaendernSubmit" value="Profilbild &auml;ndern"></td></td>
 		</tr>
 	</table>
-	</form
+	</form>
 	
 			</div></div></div>
 </body>

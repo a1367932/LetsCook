@@ -12,35 +12,31 @@
 	
 	include("dbConnection.class.php");
 	
-	//Rezeptdaten der jeweilingen Kategorie auslesen
-	$sqlSelect = "SELECT * FROM beitrag WHERE kname= '". $_GET['kategorie'] ."'";
+	//Rezeptdaten der jeweiligen Kategorie auslesen
+	$sqlSelect = "SELECT bid, titel, bdatum, bild, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung
+				  FROM beitrag NATURAL LEFT OUTER JOIN bewertung
+				  WHERE kname= '". $_GET['kategorie'] ."'
+				  GROUP BY bid";
+	
 	$stmt = mysqli_query($conn, $sqlSelect);
-	//$singleRow = mysqli_fetch_assoc($stmt);
+	
 	while($row = mysqli_fetch_array($stmt))
 	{
 		$titel[] = $row['titel'];
 		$bild[] = $row['bild'];
-		$btext[] = $row['btext'];
+		$bdatum[] = $row['bdatum'];
 		$bid[] = $row['bid'];
-		//$bewertung[] = $row['bewertung'];
-		$bewertung[]=0;
+		
+		if($row['anzahlBewertung'] != 0)
+			$bewertung[] = ($row['gesamtBewertung'] / (5 * $row['anzahlBewertung'])) * 100;
+		else 
+			$bewertung[] = 0;
 	}
-// 	$smarty->assign('titel', $singleRow['titel']);
-// 	$smarty->assign('bild', $singleRow['bild']);
-// 	$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
-// 	$smarty->assign('portion', $singleRow['portion']);
-// 	$smarty->assign('zutaten', $singleRow['zutaten']);
-// 	$smarty->assign('btext', $singleRow['btext']);
-// 	$smarty->display('rezeptAnzeigen.tpl');
-
-	//if($singleRow['anzahlBewertung'] != 0){
-		//$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
-	//}else 	$smarty->assign('durchschnittBewertungen', 0);
 	
 	$smarty->assign('bild', $bild);
 	$smarty->assign('titel', $titel);
 	$smarty->assign('bewertung', $bewertung);
-	$smarty->assign('btext', $btext);
+	$smarty->assign('bdatum', $bdatum);
 	$smarty->assign('bid', $bid);
 	
 	$smarty->display('rezepteKategorieAnzeigen.tpl');
