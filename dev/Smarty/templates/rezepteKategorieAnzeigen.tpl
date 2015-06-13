@@ -59,11 +59,19 @@
 		 				<table>
 		 					<tbody>
 			 					<tr>
-									<td width="20%"><img src="../../Uploads/{$bild[rezepte]}" alt="Profilbild" height="150" width="150"></td>
-									<td width="65%">{$titel[rezepte]} <br/> 
-													bewertung
+									<td width="20%"><img src="../../Uploads/rezeptBilder/{$bild[rezepte]}" alt="Profilbild" height="150" width="150"></td>
+									<td width="65%" valign="top">{$titel[rezepte]} <br/> 
+														<!-- Hier werden die Sterne angezeigt -->
+													{for $foo=1 to {$anzSterne[rezepte]}}
+		                    								<div class="large-1 column left">
+				                    							<div class="stern">
+		                    										<img alt="stern" src="../src/images/Stern.png">
+	                    										</div>
+	                										</div>
+													{/for}
+													von 5
 									</td>
-									<td width="15%"> {$bdatum[rezepte]}</td>
+									<td width="15%" valign="top"> {$bdatum[rezepte]}</td>
 								</tr>		
 					    	</tbody>
 						</table>

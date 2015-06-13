@@ -16,7 +16,8 @@
 	$sqlSelect = "SELECT bid, titel, bdatum, bild, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung
 				  FROM beitrag NATURAL LEFT OUTER JOIN bewertung
 				  WHERE kname= '". $_GET['kategorie'] ."'
-				  GROUP BY bid";
+				  GROUP BY bid
+				  LIMIT ". $_GET['von'] .", ". $_GET['bis'] ."";
 	
 	$stmt = mysqli_query($conn, $sqlSelect);
 	
@@ -27,10 +28,16 @@
 		$bdatum[] = $row['bdatum'];
 		$bid[] = $row['bid'];
 		
-		if($row['anzahlBewertung'] != 0)
+		if($row['anzahlBewertung'] != 0) {
 			$bewertung[] = ($row['gesamtBewertung'] / (5 * $row['anzahlBewertung'])) * 100;
-		else 
+			$anzSterne[] = round(5 * ($row['gesamtBewertung'] / (5 * $row['anzahlBewertung'])));
+		} 
+		else {
 			$bewertung[] = 0;
+			$anzSterne[] = 0;
+		}
+		
+		
 	}
 	
 	$smarty->assign('bild', $bild);
@@ -38,6 +45,8 @@
 	$smarty->assign('bewertung', $bewertung);
 	$smarty->assign('bdatum', $bdatum);
 	$smarty->assign('bid', $bid);
+	$smarty->assign('anzSterne', $anzSterne);
+	
 	
 	$smarty->display('rezepteKategorieAnzeigen.tpl');
 	

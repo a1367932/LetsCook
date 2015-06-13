@@ -31,7 +31,7 @@ if ( isset( $_POST['neuesRezeptSubmit'] ) ) {
 	}
 	
 	//Bild auf den Server hochladen
-	$verzeichnis = "C:/Users/markus/Desktop/uploadServer/rezeptbilder/";
+	$verzeichnis = "../../Uploads/rezeptbilder/";
 	
 	if ($_FILES['bild']['name']!= null)	{
 		$dateityp = GetImageSize($_FILES['bild']['tmp_name']);

@@ -16,15 +16,16 @@
 if( isset( $_POST['imageaendernSubmit'] ) ){
 	//Neues Image Speichern
 	//und kehre zu MEINE DATEN zurück
+	
 	//Bild auf den Server hochladen
-	$verzeichnis = "C:/Users/markus/Desktop/uploadServer/";
+	$verzeichnis = "../../Uploads/profilBilder/";
 	
 	if ($_FILES['bbild']['name']!= null)	{
 		$dateityp = GetImageSize($_FILES['bbild']['tmp_name']);
 		if($dateityp[2] != 0) {  //handelt es sich um ein Bild
 			if($_FILES['bbild']['size'] <  5242880) {  //ist das Bild kleiner als 5 MB
-				move_uploaded_file($_FILES['bbild']['tmp_name'], $verzeichnis . "ms.jpg");   //Profilbild wird nach dem Usernamen benannt => eindeutig
-				echo "Das Bild wurde Erfolgreich nach upload/".$_FILES['bbild']['name']." hochgeladen";
+				move_uploaded_file($_FILES['bbild']['tmp_name'], $verzeichnis . "". $_SESSION['bid'] .".jpg");   //Profilbild wird nach dem Usernamen benannt => eindeutig
+				echo "Das Bild wurde Erfolgreich nach ". $verzeichnis ."". $_FILES['bbild']['name']." hochgeladen";
 			}
 			else
 				echo "Das Bild darf nicht größer als 5 MB sein.";
@@ -45,7 +46,7 @@ if( isset( $_POST['imageaendernSubmit'] ) ){
 	mysqli_close($conn);
 	
 	
-	header("Location: meineDaten.class.php");
+// 	header("Location: meineDaten.class.php");
 }
 
 ?>

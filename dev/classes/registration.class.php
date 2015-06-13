@@ -41,7 +41,7 @@ if ( !isset( $_POST['registrationSubmit'] ) ) {
 	    $smarty->assign('reg_msg', 'Fehler:' . $sqlInsert . '<br>' . mysqli_error($conn));
 	}
 	//Bild auf den Server hochladen
-	$verzeichnis = "../../Uploads/";
+	$verzeichnis = "../../Uploads/profilBilder/";
 	
 	if ($_FILES['bbild']['name']!= null)	{
 		$dateityp = GetImageSize($_FILES['bbild']['tmp_name']);
