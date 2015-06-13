@@ -40,6 +40,8 @@
 				  NATURAL JOIN kommentar
 				  WHERE bid ='".$_GET['bid']."'";
 	
+	$stmt = mysqli_query($conn, $sqlSelect);
+	
 	//Kommentar vom Kommentar auslesen
 	$sqlSelect = "SELECT * FROM kommentar
 				  WHERE ukid ='".$_GET['bid']."'";
@@ -57,6 +59,16 @@
 					'unterkommentare2.2'
 			),
 	);
+	
+	while($row = mysqli_fetch_array($stmt))
+	{
+		$kid[] = $row['titel'];
+		$bname[] = $row['bild'];
+		$kdatum[] = $row['bdatum'];
+	}
+	
+	$smarty->assign('titel', $titel);
+	$smarty->assign('titel', $titel);
 	$smarty->assign("kommentare", $kommentare);
 	
 	

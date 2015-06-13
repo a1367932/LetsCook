@@ -51,7 +51,7 @@
       			  <span class="date">Today at 5:42PM</span>
      			</div>
      			 <div class="text">
-       				 How artistic!
+       				 {$item}
       			</div>
       
       			<div class="actions">
@@ -61,13 +61,7 @@
   
             <strong>hauptkommentar!!!: </strong><br />
         {else}
-            {$item}
-   {/if}
-  {/foreach}
-{/foreach}
-  
- 
-  <!-- Unterkomentar -->  
+        	<!-- Unterkomentar -->  
     <div class="comments">
       <div class="comment">
         <a class="avatar">
@@ -79,7 +73,7 @@
             <span class="date">Just now</span>
           </div>
           <div class="text">
-            Elliot you are always so right :)
+             {$item}
           </div>
         </div>
       </div>
@@ -87,6 +81,13 @@
    </div>
    
    </div>
+           
+   {/if}
+  {/foreach}
+{/foreach}
+  
+ 
+  
    
 
   
