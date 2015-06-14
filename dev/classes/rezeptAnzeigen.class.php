@@ -9,10 +9,22 @@
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
 	
-	
-	
+	session_start();
 	include("dbConnection.class.php");
+?>
+	
+<?php
 
+	if ( isset( $_POST['neuesUnterk'] ) ) {
+		//Hier kommt das Speichenr des Unterkommentars
+		$kid=$_GET['neuesUk'];
+		$uktext=$_POST['uktext'];
+		echo "Unterkommentar HauptKommentar ID: $kid Benutzername: Aus der Session auslesen?? Kommentardatum: Akktuelles date Kommentartext: $uktext";
+	}else if ( isset( $_POST['neuesK'] ) ){
+		//Hier kommt das Speichern eines neuen Kommentars her
+		$ktext=$_POST['ktext'];
+		echo "Unterkommentar HauptKommentar ID: Neue Id vergeben! Benutzername: Aus der Session auslesen?? Kommentardatum: Akktuelles date Kommentartext: $ktext";
+	}else{
 	//Rezeptdaten auslesen
 	$sqlSelect = "SELECT titel, btext, bild, zutaten, portion, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung 
 				  FROM beitrag NATURAL LEFT OUTER JOIN bewertung 
@@ -85,4 +97,5 @@
 	$smarty->display('rezeptAnzeigen.tpl');
 	
 	mysqli_close($conn);
+	}
 ?>

@@ -6,6 +6,18 @@
       $("#header").load("Smarty/templates/header.tpl"); 
     });
     </script>
+ 		<!-- Es wird ein Textfeld mit Button angezeigt wenn reply gecklickt wurde! -->
+       
+        <script type="text/javascript">
+        	function reply(id) {
+                document.getElementById("kommentierenForm"+id).style.visibility = 'visible';
+                document.getElementById("kommentierenDiv1"+id).style.visibility = 'visible';
+                document.getElementById("kommentierenText"+id).style.visibility = 'visible';
+                document.getElementById("kommentierenDiv2"+id).style.visibility = 'visible';
+                document.getElementById("kommentierenI"+id).style.visibility = 'visible';
+			}
+        </script>
+    
 	<title>Rezept</title>
 </head>
 <body>
@@ -33,7 +45,8 @@
 		</tr>
 	</table>
 	
-	<!-- Komentare anzeigen mit semantic ui-->
+	<!-- Komentare anzeigen mit semantic ui
+	Wollte es mit Semantic machen funkt aber nicht bei mir ! Es reichen auch Tabellen haubtsache die Einrückungen passen!!-->
 	
 <div class="ui threaded comments">
   <h3 class="ui dividing header">Kommentare</h3>
@@ -53,10 +66,23 @@
       			</div>
       
       			<div class="actions">
-        			<a class="reply">Reply</a>
+        			<a class="reply" onclick="reply({$kid[kommentar]});">Reply</a>
       			</div>
     		</div>
         
+        <!-- Es wird ein Textfeld mit Button angezeigt wenn reply gecklickt wurde! -->
+       
+        <!-- ReplyForm standartmässig hidden -->
+        <form class="ui reply  form" action="rezeptAnzeigen.class.php?neuesUk={$kid[kommentar]}" method="POST" style="visibility: hidden;" id="kommentierenForm{$kid[kommentar]}">
+			<div class="field" style="visibility: hidden;" id="kommentierenDiv1{$kid[kommentar]}">
+				<textarea style="visibility: hidden;" id="kommentierenText{$kid[kommentar]}" name="uktext"></textarea>
+			</div>
+			<div class="ui blue labeled submit icon button" style="visibility: hidden;" id="kommentierenDiv2{$kid[kommentar]}">
+				<!--  <i class="icon edit"  style="visibility: hidden;" id="kommentierenI{$kid[kommentar]}"></i> Add Reply-->
+				<input type="submit" name="neuesUnterk" id="kommentierenI{$kid[kommentar]}" value="Add Reply" style="visibility: hidden;">
+			</div>
+		</form>
+	
         	<!-- Unterkomentar -->  
      {if isset($ukid[kommentar])}
 		{section name=ukommentar loop=$ukid}
@@ -84,6 +110,14 @@
    	{/if}	
 	{/section}
    </div>
-
+	<form class="ui reply form" action="rezeptAnzeigen.class.php" method="POST">
+		<div class="field">
+			<textarea name="ktext"></textarea>
+		</div>
+		<div class="ui blue labeled submit icon button">
+			<!-- <i class="icon edit"></i> Add Reply-->
+			<input type="submit" name="neuesK" value="Add Reply">
+		</div>
+	</form>
 </body>
 </html>
