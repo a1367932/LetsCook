@@ -16,14 +16,23 @@
 <?php
 
 	if ( isset( $_POST['neuesUnterk'] ) ) {
-		//Hier kommt das Speichenr des Unterkommentars
+		//!!!!Hier kommt das Speichenr des Unterkommentars!!!!!!
 		$kid=$_GET['neuesUk'];
 		$uktext=$_POST['uktext'];
 		echo "Unterkommentar HauptKommentar ID: $kid Benutzername: Aus der Session auslesen?? Kommentardatum: Akktuelles date Kommentartext: $uktext";
+		
+		//Neu laden der Seite
+		$bid=$_GET['bid'];
+		//header("Location: rezeptAnzeigen.class.php?bid=$bid");
 	}else if ( isset( $_POST['neuesK'] ) ){
-		//Hier kommt das Speichern eines neuen Kommentars her
+		//!!!!!!Hier kommt das Speichern eines neuen Kommentars her!!!!!!!
 		$ktext=$_POST['ktext'];
 		echo "Unterkommentar HauptKommentar ID: Neue Id vergeben! Benutzername: Aus der Session auslesen?? Kommentardatum: Akktuelles date Kommentartext: $ktext";
+		
+		//Neu laden der Seite
+		$bid=$_GET['bid'];
+		//header("Location: rezeptAnzeigen.class.php?bid=$bid");
+	
 	}else{
 	//Rezeptdaten auslesen
 	$sqlSelect = "SELECT titel, btext, bild, zutaten, portion, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung 
@@ -44,7 +53,7 @@
 	$smarty->assign('portion', $singleRow['portion']);
 	$smarty->assign('zutaten', $singleRow['zutaten']);
 	$smarty->assign('btext', $singleRow['btext']);
-	
+	$smarty->assign('bid', $_GET['bid']);
 	
 	//Kommentare auslesen
 	$sqlSelectKommentare = "SELECT kid, bname, kdatum, ktext, bbild FROM erstellt 

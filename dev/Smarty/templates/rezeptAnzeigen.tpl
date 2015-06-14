@@ -54,7 +54,7 @@
 	{section name=kommentar loop=$kid}
   		 <div class="comment">
    			 <a class="avatar">
-   			   <img src="../../Uploads/profilBilder/{$bbild[kommentar]}">
+   			   <img width="50" height="50" src="../../Uploads/profilBilder/{$bbild[kommentar]}">
    			 </a>
    			 <div class="content">
      			 <a class="author">{$bname[kommentar]}</a>
@@ -73,7 +73,7 @@
         <!-- Es wird ein Textfeld mit Button angezeigt wenn reply gecklickt wurde! -->
        
         <!-- ReplyForm standartmässig hidden -->
-        <form class="ui reply  form" action="rezeptAnzeigen.class.php?neuesUk={$kid[kommentar]}" method="POST" style="visibility: hidden;" id="kommentierenForm{$kid[kommentar]}">
+        <form class="ui reply  form" action="rezeptAnzeigen.class.php?neuesUk={$kid[kommentar]}&bid={$bid}" method="POST" style="visibility: hidden;" id="kommentierenForm{$kid[kommentar]}">
 			<div class="field" style="visibility: hidden;" id="kommentierenDiv1{$kid[kommentar]}">
 				<textarea style="visibility: hidden;" id="kommentierenText{$kid[kommentar]}" name="uktext"></textarea>
 			</div>
@@ -91,7 +91,7 @@
   				  <div class="comments">
      				 <div class="comment">
        					 <a class="avatar" >
-         					 <img src="../../Uploads/profilBilder/{$ubbild[ukommentar]}">
+         					 <img width="50" height="50" src="../../Uploads/profilBilder/{$ubbild[ukommentar]}">
         				</a>
         			<div class="content">
           				<a class="author">{$ubname[ukommentar]}</a>
@@ -110,7 +110,7 @@
    	{/if}	
 	{/section}
    </div>
-	<form class="ui reply form" action="rezeptAnzeigen.class.php" method="POST">
+	<form class="ui reply form" action="rezeptAnzeigen.class.php?bid={$bid}" method="POST">
 		<div class="field">
 			<textarea name="ktext"></textarea>
 		</div>
