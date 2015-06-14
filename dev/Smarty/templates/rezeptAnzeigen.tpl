@@ -37,59 +37,53 @@
 	
 <div class="ui threaded comments">
   <h3 class="ui dividing header">Kommentare</h3>
-  <!-- forschleifen -->
- {foreach from=$kommentare key=kommentar item=items}
-  {foreach from=$items item=item}
-  	{if $item@first}
+  <!-- schleife Hauptkommentare   -->
+	{section name=kommentar loop=$kid}
   		 <div class="comment">
    			 <a class="avatar">
-   			   <img src="/images/avatar/small/matt.jpg">
+   			   <img src="../../Uploads/profilBilder/{$bbild[kommentar]}">
    			 </a>
    			 <div class="content">
-     			 <a class="author">Matt</a>
+     			 <a class="author">{$bname[kommentar]}</a>
       			<div class="metadata">
-      			  <span class="date">Today at 5:42PM</span>
+      			  <span class="date">{$kdatum[kommentar]}</span>
      			</div>
      			 <div class="text">
-       				 {$item}
+       				 {$ktext[kommentar]}
       			</div>
       
       			<div class="actions">
         			<a class="reply">Reply</a>
       			</div>
     		</div>
-  
-            <strong>hauptkommentar!!!: </strong><br />
-        {else}
+        
         	<!-- Unterkomentar -->  
-    <div class="comments">
-      <div class="comment">
-        <a class="avatar">
-          <img src="/images/avatar/small/jenny.jpg">
-        </a>
-        <div class="content">
-          <a class="author">Jenny Hess</a>
-          <div class="metadata">
-            <span class="date">Just now</span>
-          </div>
-          <div class="text">
-             {$item}
-          </div>
-        </div>
-      </div>
-    </div>
+     {if isset($ukid[kommentar])}
+		{section name=ukommentar loop=$ukid}
+			{if $kid[kommentar] == $ukid[ukommentar]}
+			 						
+  				  <div class="comments">
+     				 <div class="comment">
+       					 <a class="avatar" >
+         					 <img src="../../Uploads/profilBilder/{$ubbild[ukommentar]}">
+        				</a>
+        			<div class="content">
+          				<a class="author">{$ubname[ukommentar]}</a>
+          				<div class="metadata">
+            				<span class="date">{$ukdatum[ukommentar]}</span>
+          				</div>
+          				<div class="text">
+             				{$uktext[ukommentar]}
+          				</div>
+        				</div>
+      				</div>
+    				</div>
+   				</div>
+  			{/if}	
+		{/section}
+   	{/if}	
+	{/section}
    </div>
-   
-   </div>
-           
-   {/if}
-  {/foreach}
-{/foreach}
-  
- 
-  
-   
 
-  
 </body>
 </html>

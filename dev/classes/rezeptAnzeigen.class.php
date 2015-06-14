@@ -35,53 +35,52 @@
 	
 	
 	//Kommentare auslesen
-	$sqlSelect = "SELECT kid, bname, kdatum, ktext FROM erstellt 
-				  NATURAL JOIN beitrag
-				  NATURAL JOIN kommentar
-				  WHERE bid ='".$_GET['bid']."'";
+	$sqlSelectKommentare = "SELECT kid, bname, kdatum, ktext, bbild FROM erstellt 
+						    NATURAL JOIN beitrag
+						    NATURAL JOIN kommentar
+							NATURAL JOIN benutzer
+						    WHERE bid = ".$_GET['bid'] ."
+						    AND ukid IS NULL";
 	
-	$stmt = mysqli_query($conn, $sqlSelect);
 	
-	//Kommentar vom Kommentar auslesen
-	$sqlSelect = "SELECT * FROM kommentar
-				  WHERE ukid =1";
-	$stmt2 = mysqli_query($conn, $sqlSelect);
 	
-	//Kommentar Arrays
-	$kommentare = array(
-			'kommentare1' => array(
-					'haupt kommentar1',
-					'unterkommentar1',
-					'unterkommentar1.2'
-			),
-			'kommentare2' => array(
-					'hauptkommentar2',
-					'unterkommentare2',
-					'unterkommentare2.2'
-			),
-	);
+	$stmtKommentare = mysqli_query($conn, $sqlSelectKommentare);
 	
-	while($row = mysqli_fetch_array($stmt))
-	{
+	while($row = mysqli_fetch_array($stmtKommentare)) {
 		$kid[] = $row['kid'];
 		$bname[] = $row['bname'];
 		$kdatum[] = $row['kdatum'];
-	}
-	while($row2 = mysqli_fetch_array($stmt2))
-	{
-		$kidu[] = $row2['kid'];
-		$bnameu[] = $row2['bname'];
-		$kdatumu[] = $row2['kdatum'];
+		$ktext[] = $row['ktext'];
+		$bbild[] = $row['bbild'];
+		
+		//Kommentar vom Kommentar auslesen
+		$sqlSelectUnterkommentare = "SELECT kid, ukid, bname, kdatum, ktext, bbild FROM kommentar
+									 NATURAL JOIN erstellt
+									 NATURAL JOIN benutzer
+				  					 WHERE ukid = ". $row['kid'];
+		
+		$stmtUnterKommentare = mysqli_query($conn, $sqlSelectUnterkommentare);
+	
+		while($row = mysqli_fetch_array($stmtUnterKommentare)) {
+			$ukid[] = $row['ukid'];
+			$ubname[] = $row['bname'];
+			$ukdatum[] = $row['kdatum'];
+			$uktext[] = $row['ktext'];
+			$ubbild[] = $row['bbild'];
+		}
 	}
 	
 	$smarty->assign('kid', $kid);
 	$smarty->assign('bname', $bname);
 	$smarty->assign('kdatum', $kdatum);
-	$smarty->assign('kidu', $kidu);
-	$smarty->assign('bnameu', $bnameu);
-	$smarty->assign('kdatumu', $kdatumu);
-	$smarty->assign("kommentare", $kommentare);
+	$smarty->assign('ktext', $ktext);
+	$smarty->assign('bbild', $bbild);
 	
+	$smarty->assign('ukid', $ukid);
+	$smarty->assign('ubname', $ubname);
+	$smarty->assign('ukdatum', $ukdatum);
+	$smarty->assign('uktext', $uktext);
+	$smarty->assign('ubbild', $ubbild);
 	
 	$smarty->display('rezeptAnzeigen.tpl');
 	
