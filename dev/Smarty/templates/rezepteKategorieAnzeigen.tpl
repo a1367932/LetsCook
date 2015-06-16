@@ -31,11 +31,10 @@
 									<td valign="top">{$titel[rezepte]} <br/> 
 														<!-- Hier werden die Sterne angezeigt -->
 													{for $foo=1 to {$anzSterne[rezepte]}}
-		                    								<div class="large-1 column left">
 				                    							<div class="stern">
 		                    										<img alt="stern" src="../src/images/Stern.png">
 	                    										</div>
-	                										</div>
+	                										
 													{/for}
 													von 5
 									</td>

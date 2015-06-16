@@ -50,6 +50,7 @@
         <ul class="dropdown">
           <li><a href="meineDaten.class.php">Meine Daten</a></li>
 		  <li><a href="meineRezepte.class.php">Meine Rezepte</a></li>
+		  <li><a href="logout.class.php">Logout</a></li>
         </ul>
       </li>
     </ul>

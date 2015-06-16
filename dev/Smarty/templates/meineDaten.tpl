@@ -25,17 +25,20 @@
 	</table>
 	<table>
 		<tr>
+			<td><b>Vor- und Nachname</b></td>
 			<td>{$vorname}</td>
 			<td>{$nachname}</td>
 		</tr>
 		<tr>
+			<td><b>Alter</b></td>
 			<td>{$alter}</td>
 		</tr>
 		<tr>
+			<td><b>E-Mail</b></td>
 			<td>{$email}</td>
 		</tr>
 		<tr>
-			<td>Adresse</td>
+			<td><b>Adresse</b></td>
 			<td>{$strasse}</td>
 			<td>{$nummer}</td>
 			<td>{$plz}</td>
@@ -43,7 +46,7 @@
 			<td>{$land}</td>
 		</tr>
 		<tr>
-			<td><td><input type="submit" name="meineDatenSubmit" value="Daten &Auml;ndern"></td></td>
+			<td><input type="submit" name="meineDatenSubmit" value="Daten &Auml;ndern"></td></td>
 		</tr>
 	</table>
 	</form>

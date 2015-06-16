@@ -52,6 +52,7 @@
         <ul class="dropdown">
           <li><a href="classes/meineDaten.class.php">Meine Daten</a></li>
 		  <li><a href="classes/meineRezepte.class.php">Meine Rezepte</a></li>
+		   <li><a href="classes/logout.class.php">Logout</a></li>
         </ul>
       </li>
     </ul>

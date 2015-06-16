@@ -17,10 +17,10 @@
 		<table>
 			<tr>
 				<td><img src="../../Uploads/{$bild[rezepte]}" alt="Rezeptbild" height="150" width="150"></td>
-				<td> {$titel[rezepte]}</td>
+				<td width= "75%"> {$titel[rezepte]}</td>
 			</tr>
 			<tr>
-				<td> {$bewertung[rezepte]}</td>
+				<td>Bewertung: {$bewertung[rezepte]}</td>
 				<td> {$btext[rezepte]}</td>	
 			</tr>
 		</table>
