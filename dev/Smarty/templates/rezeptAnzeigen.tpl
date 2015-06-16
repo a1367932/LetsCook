@@ -118,6 +118,6 @@
 			<!-- <i class="icon edit"></i> Add Reply-->
 			<input type="submit" name="neuesK" value="Add Reply">
 		</div>
-	</form>
+	</form>{include file='footer.tpl'}
 </body>
 </html>

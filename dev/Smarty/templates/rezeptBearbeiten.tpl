@@ -1,16 +1,12 @@
 <html>
 <head>
-  <script src="src/foundation/js/vendor/jquery.js"></script>
-  <script> 
-    $(function(){
-      $("#header").load("Smarty/templates/header.tpl"); 
-    });
-    </script>
 	<title>Rezept bearbeiten</title>
+	<script src="../src/foundation/js/vendor/fastclick.js"></script>
+	<script src="../src/foundation/js/vendor/jquery.js"></script>
 </head>
 <body>
-<div class="container">
-	<div id="header"/></div>
+  
+  {include file='header_2.tpl'}
 	  
 		<div class="row">
 		  <div class="large-12 columns">
@@ -59,7 +55,6 @@
 	</form>
 	</div>
 	</div>
-	</div>
-	</div>
+	</div>{include file='footer.tpl'}
 </body>
 </html>

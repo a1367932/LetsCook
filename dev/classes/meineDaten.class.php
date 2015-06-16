@@ -6,7 +6,6 @@
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
-
 	session_start();
 ?>
 
@@ -39,10 +38,9 @@ if ( !isset( $_POST['meineDatenSubmit'] ) ) {
 	$alter = date ('Y', $timestamp) - date ('Y', $geburtsdatum);
 	$smarty->assign('alter', $alter);
 	
-	$smarty->display('meineDaten.tpl');
-	
 	mysqli_close($conn);
 }else{
 	header("Location: datenBearbeiten.class.php");
 }
+	$smarty->display('meineDaten.tpl');
 ?>
