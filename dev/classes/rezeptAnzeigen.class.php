@@ -16,22 +16,72 @@
 <?php
 
 	if ( isset( $_POST['neuesUnterk'] ) ) {
-		//!!!!Hier kommt das Speichenr des Unterkommentars!!!!!!
+		//!!!!Hier kommt das Speichern des Unterkommentars!!!!!!
 		$kid=$_GET['neuesUk'];
 		$uktext=$_POST['uktext'];
-		echo "Unterkommentar HauptKommentar ID: $kid Benutzername: Aus der Session auslesen?? Kommentardatum: Akktuelles date Kommentartext: $uktext";
+		$bid=$_GET['bid'];
+		
+		//Unterkommentar speichern
+		$sqlInsertKommentar = "INSERT INTO kommentar (kdatum, ktext, ukid) VALUES (SYSDATE(), '". $uktext ."', ". $kid .")";
+		
+		//SQL - Anweisung ausführen
+		if (mysqli_query($conn, $sqlInsertKommentar)) {
+			$smarty->assign('reg_msg', 'Erfolgreich registriert');
+		} else {
+			$smarty->assign('reg_msg', 'Fehler:' . $sqlInsertKommentar . '<br>' . mysqli_error($conn));
+		}
+		
+		//GetKommentarID - nicht Threadsafe!!!
+		$sqlSelectKid = "SELECT max(kid) AS kid from kommentar";
+		$stmt = mysqli_query($conn, $sqlSelectKid);
+		$singleRow = mysqli_fetch_assoc($stmt);
+		
+		//Erstellt speichern
+		$sqlInsertErstellt = "INSERT INTO erstellt VALUES (". $bid .", ". $singleRow['kid'] .", '". $_SESSION['bid'] ."')";
+		
+		//SQL - Anweisung ausführen
+		if (mysqli_query($conn, $sqlInsertErstellt)) {
+			$smarty->assign('reg_msg', 'Erfolgreich registriert');
+		} else {
+			$smarty->assign('reg_msg', 'Fehler:' . $sqlInsertErstellt . '<br>' . mysqli_error($conn));
+		}
+		
 		
 		//Neu laden der Seite
-		$bid=$_GET['bid'];
-		//header("Location: rezeptAnzeigen.class.php?bid=$bid");
+		header("Location: rezeptAnzeigen.class.php?bid=$bid");
 	}else if ( isset( $_POST['neuesK'] ) ){
 		//!!!!!!Hier kommt das Speichern eines neuen Kommentars her!!!!!!!
 		$ktext=$_POST['ktext'];
+		$bid=$_GET['bid'];
 		echo "Unterkommentar HauptKommentar ID: Neue Id vergeben! Benutzername: Aus der Session auslesen?? Kommentardatum: Akktuelles date Kommentartext: $ktext";
 		
+		//Kommentar speichern
+		$sqlInsertKommentar = "INSERT INTO kommentar (kdatum, ktext) VALUES (SYSDATE(), '". $ktext ."')";
+		
+		//SQL - Anweisung ausführen
+		if (mysqli_query($conn, $sqlInsertKommentar)) {
+			$smarty->assign('reg_msg', 'Erfolgreich registriert');
+		} else {
+			$smarty->assign('reg_msg', 'Fehler:' . $sqlInsertKommentar . '<br>' . mysqli_error($conn));
+		}
+		
+		//GetKommentarID - nicht Threadsafe!!!
+		$sqlSelectKid = "SELECT max(kid) AS kid from kommentar";
+		$stmt = mysqli_query($conn, $sqlSelectKid);
+		$singleRow = mysqli_fetch_assoc($stmt);
+		
+		//Erstellt speichern
+		$sqlInsertErstellt = "INSERT INTO erstellt VALUES (". $bid .", ". $singleRow['kid'] .", '". $_SESSION['bid'] ."')";
+		
+		//SQL - Anweisung ausführen
+		if (mysqli_query($conn, $sqlInsertErstellt)) {
+			$smarty->assign('reg_msg', 'Erfolgreich registrtiert');
+		} else {
+			$smarty->assign('reg_msg', 'Fehler:' . $sqlInsertErstellt . '<br>' . mysqli_error($conn));
+		}
+		
 		//Neu laden der Seite
-		$bid=$_GET['bid'];
-		//header("Location: rezeptAnzeigen.class.php?bid=$bid");
+		header("Location: rezeptAnzeigen.class.php?bid=$bid");
 	
 	}else{
 	//Rezeptdaten auslesen

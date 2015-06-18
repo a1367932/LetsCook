@@ -46,7 +46,7 @@
 	</table>
 	
 	<!-- Komentare anzeigen mit semantic ui
-	Wollte es mit Semantic machen funkt aber nicht bei mir ! Es reichen auch Tabellen haubtsache die Einrückungen passen!!-->
+	Wollte es mit Semantic machen funkt aber nicht bei mir ! Es reichen auch Tabellen haubtsache die Einrï¿½ckungen passen!!-->
 	
 <div class="ui threaded comments">
   <h3 class="ui dividing header">Kommentare</h3>
@@ -72,7 +72,7 @@
         
         <!-- Es wird ein Textfeld mit Button angezeigt wenn reply gecklickt wurde! -->
        
-        <!-- ReplyForm standartmässig hidden -->
+        <!-- ReplyForm standartmï¿½ssig hidden -->
         <form class="ui reply  form" action="rezeptAnzeigen.class.php?neuesUk={$kid[kommentar]}&bid={$bid}" method="POST" style="visibility: hidden;" id="kommentierenForm{$kid[kommentar]}">
 			<div class="field" style="visibility: hidden;" id="kommentierenDiv1{$kid[kommentar]}">
 				<textarea style="visibility: hidden;" id="kommentierenText{$kid[kommentar]}" name="uktext"></textarea>
@@ -99,7 +99,7 @@
             				<span class="date">{$ukdatum[ukommentar]}</span>
           				</div>
           				<div class="text">
-             				{$uktext[ukommentar]}
+             				<font color="red">{$uktext[ukommentar]}</font>
           				</div>
         				</div>
       				</div>
