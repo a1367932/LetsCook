@@ -24,10 +24,35 @@
 	<h1>{$titel}</h1>
 	<table>
 		<tr>
-			<td><img src="../../Uploads/rezeptBilder/{$bild}" alt="Rezeptbild" height="150" width="250"></td>
-		</tr>
-		<tr>
-			<td>{$durchschnittBewertungen} in Prozent</td>
+			<td><img src="../../Uploads/rezeptBilder/{$bild}" alt="Rezeptbild" height="150" width="250">    
+			<!-- Hier werden die Sterne angezeigt -->
+												{if {$anzSterne}!=0}
+													<!-- Berechnen wieviele Sterne nicht belegt sind und diese anzeigen. -->
+													{for $foo=1 to {math equation="x-y" x=5 y={$anzSterne}} }
+				                    							<div class="stern" style="float: right;">
+		                    										<img alt="stern" height="20" width="20" src="../src/images/Stern2.png">
+	                    										</div>
+	                										
+													{/for}
+													{for $foo=1 to {$anzSterne}}
+				                    							<div class="stern" style="float: right;">
+		                    										<img alt="stern" height="20" width="20" src="../src/images/Stern.png">
+	                    										</div>
+	                										
+													{/for}
+												{else}
+													<div class="stern">keine Bewertung</div>
+												{/if}
+						
+						<!-- Sollte unter der aktuellen Bewertung stehen ! Bekomms nicht hin :( -->
+						<div>Jetzt Bewerten
+						{for $foo=1 to 5}
+				          	<div class="stern" style="float: left;">
+		                    	<a href="rezeptAnzeigen.class.php?bid={$bid}&wert={$foo}"><img alt="stern" height="20" width="20" src="../src/images/Stern2.png" onmouseover="src='../src/images/Stern.png'" onmouseout="src='../src/images/Stern2.png'" ></a>
+	                    	</div>								
+						{/for}
+						</div>
+			</td>
 		</tr>
 		<tr>
 			<td>{$portion} Portionen</td>

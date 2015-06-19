@@ -83,6 +83,16 @@
 		//Neu laden der Seite
 		header("Location: rezeptAnzeigen.class.php?bid=$bid");
 	
+	}else if ( isset( $_GET['wert'] ) ){
+		$bid=$_GET['bid'];
+		$wert=$_GET['wert'];
+		$sqlInsertBewertung = "INSERT INTO bewertung (bid, anzahl, wert) VALUES (". $bid .", 1, ".$wert.")";
+		//SQL - Anweisung ausführen
+		if (mysqli_query($conn, $sqlInsertBewertung)) {
+			header("Location: rezeptAnzeigen.class.php?bid=$bid");
+		} else {
+			$smarty->assign('reg_msg', 'Fehler:' . $sqlInsertBewertung . '<br>' . mysqli_error($conn));
+		}
 	}else{
 	//Rezeptdaten auslesen
 	$sqlSelect = "SELECT titel, btext, bild, zutaten, portion, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung 
@@ -95,15 +105,20 @@
 	$smarty->assign('titel', $singleRow['titel']);
 	$smarty->assign('bild', $singleRow['bild']);
 	if($singleRow['anzahlBewertung'] != 0){
-		$smarty->assign('durchschnittBewertungen', ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100);  //Prozentuelle Weiterempfehlung wird berechnet
+		$bewertung = ($singleRow['gesamtBewertung'] / (5 * $singleRow['anzahlBewertung'])) * 100;
+		$anzSterne = round(5 * ($singleRow['gesamtBewertung'] / (5 *$singleRow['anzahlBewertung'])));
 	}
-	else 	
-		$smarty->assign('durchschnittBewertungen', 0);
+	else{
+		$bewertung = 0;
+		$anzSterne = 0;
+	}
 	
 	$smarty->assign('portion', $singleRow['portion']);
 	$smarty->assign('zutaten', $singleRow['zutaten']);
 	$smarty->assign('btext', $singleRow['btext']);
 	$smarty->assign('bid', $_GET['bid']);
+	$smarty->assign('bewertung', $bewertung);
+	$smarty->assign('anzSterne', $anzSterne);
 	
 	//Kommentare auslesen
 	$sqlSelectKommentare = "SELECT kid, bname, kdatum, ktext, bbild FROM erstellt 
