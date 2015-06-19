@@ -2,7 +2,7 @@
 <head>
 	<script src="../src/foundation/js/vendor/fastclick.js"></script>
 	<script src="../src/foundation/js/vendor/jquery.js"></script>
-	<title>Profilbild &Aumlndern</title>
+	<title>Rezepte Anzeigen</title>
 </head>
 <body>
   {include file='header_2.tpl'}
@@ -23,28 +23,34 @@
  				<tbody>
  				<!-- Tabelle der Rezepte wird erzgeugt -->
  				{section name=rezepte loop=$titel}
- 					<a href="rezeptAnzeigen.class.php?bid={$bid[rezepte]}">
-		 				
-		 					
-			 					<tr>
+			 					<tr onclick="window.location.href='rezeptAnzeigen.class.php?bid={$bid[rezepte]}'" onMouseOver="this.bgColor='#D4FFFD'" onMouseOut="this.bgColor='#FFFFFF'">
 									<td><img src="../../Uploads/rezeptBilder/{$bild[rezepte]}" alt="Profilbild" height="150" width="150"></td>
 									<td valign="top">{$titel[rezepte]} <br/> 
 														<!-- Hier werden die Sterne angezeigt -->
+												{if {$anzSterne[rezepte]}!=0}
 													{for $foo=1 to {$anzSterne[rezepte]}}
-				                    							<div class="stern">
-		                    										<img alt="stern" src="../src/images/Stern.png">
+				                    							<div class="stern" style="float: left;">
+		                    										<img alt="stern" height="20" width="20" src="../src/images/Stern.png">
 	                    										</div>
 	                										
 													{/for}
-													von 5
+													<!-- Berechnen wieviele Sterne nicht belegt sind und diese anzeigen. -->
+													{for $foo=1 to {math equation="x-y" x=5 y={$anzSterne[rezepte]}} }
+				                    							<div class="stern" style="float: left;">
+		                    										<img alt="stern" height="20" width="20" src="../src/images/Stern2.png">
+	                    										</div>
+	                										
+													{/for}
+												{else}
+													<div class="stern">keine Bewertung</div>
+												{/if}
 									</td>
 									<td valign="top"> {$bdatum[rezepte]}</td>
 								</tr>		
 					    
-					</a>
 				{/section}
 				</tbody>
-						</table>
+			 </table>
 			</div>
 		</div>
 	</div>{include file='footer.tpl'}
