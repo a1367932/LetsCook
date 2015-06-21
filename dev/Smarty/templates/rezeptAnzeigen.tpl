@@ -91,7 +91,7 @@
   		 <div class="comment">
 		  <table style="width:100%">
 			<tr>
-			  <td>
+			  <td width="20%">
 				 <a class="avatar">
 				  <img width="50" height="50" src="../../Uploads/profilBilder/{$bbild[kommentar]}">
 				 </a>
@@ -132,7 +132,7 @@
 			</div>
 			<div class="ui blue labeled submit icon button" style="visibility: hidden;" id="kommentierenDiv2{$kid[kommentar]}">
 				<!--  <i class="icon edit"  style="visibility: hidden;" id="kommentierenI{$kid[kommentar]}"></i> Add Reply-->
-				<input type="submit" name="neuesUnterk" id="kommentierenI{$kid[kommentar]}" value="Add Reply" style="visibility: hidden;">
+				<input type="submit" name="neuesUnterk" id="kommentierenI{$kid[kommentar]}" value="Antworten" style="visibility: hidden;">
 			</div>
 		</form>
 	</div>
@@ -141,22 +141,35 @@
      {if isset($ukid[kommentar])}
 		{section name=ukommentar loop=$ukid}
 			{if $kid[kommentar] == $ukid[ukommentar]}
-			 	<div class="panel"  style="margin-left:50px">	
+			 	<div style="margin-left:50px">	
   				  <div class="comments">
-     				 <div class="comment">
-       					 <a class="avatar" >
-         					 <img width="50" height="50" src="../../Uploads/profilBilder/{$ubbild[ukommentar]}">
-        				</a>
-        			<div class="content">
-          				<a class="author">{$ubname[ukommentar]}</a>
-          				<div class="metadata">
-            				<span class="date">{$ukdatum[ukommentar]}</span>
-          				</div>
-          				<div class="text">
-             				<font color="red">{$uktext[ukommentar]}</font>
-          				</div>
-        				</div>
-					  </div>
+     			 <table style="width:100%">
+			<tr>
+			  <td width="20%">
+				 <a class="avatar">
+				  <img width="50" height="50" src="../../Uploads/profilBilder/{$ubbild[ukommentar]}">
+				 </a>
+			  </td>
+			<div class="content">
+			  <td rowspan="4">
+				<div class="text">
+       				 {$uktext[ukommentar]}
+      			</div>
+			  </td>
+			  <tr>
+				<td>
+				   <a class="author">{$ubname[ukommentar]}</a>
+				</td>
+			  </tr>
+			  <tr>
+				<td>
+				  <div class="metadata">
+      			  <span class="date">{$ukdatum[ukommentar]}</span>
+     			</div>
+				</td>
+			  </tr>
+    		</div>
+		  </table>
     				</div>
    				</div>
   			{/if}	
@@ -167,11 +180,11 @@
    
 	<form class="ui reply form" action="rezeptAnzeigen.class.php?bid={$bid}" method="POST">
 		<div class="field">
-			<textarea name="ktext"></textarea>
+			<textarea name="ktext"  style="height:200px"></textarea>
 		</div>
 		<div class="ui blue labeled submit icon button">
 			<!-- <i class="icon edit"></i> Add Reply-->
-			<input type="submit" name="neuesK" value="Add Reply">
+			<input type="submit" name="neuesK" value="Senden">
 		</div>
 	</form>
 	</div></div></div></div>
