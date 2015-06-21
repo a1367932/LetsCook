@@ -1,11 +1,8 @@
 <html>
 <head>
-  <script src="src/foundation/js/vendor/jquery.js"></script>
-  <script> 
-    $(function(){
-      $("#header").load("Smarty/templates/header.tpl"); 
-    });
-    </script>
+	<script src="../src/foundation/js/vendor/fastclick.js"></script>
+	<script src="../src/foundation/js/vendor/jquery.js"></script>
+  
  		<!-- Es wird ein Textfeld mit Button angezeigt wenn reply gecklickt wurde! -->
        
         <script type="text/javascript">
@@ -21,80 +18,111 @@
 	<title>Rezept</title>
 </head>
 <body>
-	<h1>{$titel}</h1>
-	<table>
+  {include file='header_2.tpl'}
+   <div class="row">
+   		<div class="large-12 columns">
+		  <div class="panel">
+			  <table width= "100%">
+			  <tr>
+				<td><h1>{$titel}</h1></td>
+				<td>
+			   <!-- Hier werden die Sterne angezeigt -->
+				{if {$anzSterne}!=0}
+					<!-- Berechnen wieviele Sterne nicht belegt sind und diese anzeigen. -->
+					{for $foo=1 to {math equation="x-y" x=5 y={$anzSterne}} }
+								<div class="stern" style="float: right;">
+									<img alt="stern" height="45" width="45" src="../src/images/Stern2.png">
+								</div>
+							
+					{/for}
+					{for $foo=1 to {$anzSterne}}
+								<div class="stern" style="float: right;">
+									<img alt="stern" height="45" width="45" src="../src/images/Stern.png">
+								</div>
+							
+					{/for}
+				{else}
+					<div class="stern">Keine Bewertungen</div>
+				{/if}
+				</td>
+			  </tr>
+			</table>
+	
+			  <table width="100%">
+			  <tr>
+				<th colspan="2" style="text-align: center">
+				  <img src="../../Uploads/rezeptBilder/{$bild}" alt="Rezeptbild" height="150" width="250" align="middle" border="2" >
+				</th>
+			  </tr>
+			  <tr>
+				<td><b>Portionen:</b></td>
+				<td>{$portion}</td>
+			  <tr>
+				<td>
+				 <b>Jetzt Bewerten:</b>
+				</td>
+				<td>
+				  {for $foo=1 to 5}
+					  <div class="stern" style="float: left;">
+						  <a href="rezeptAnzeigen.class.php?bid={$bid}&wert={$foo}"><img alt="stern" height="20" width="20" src="../src/images/Stern2.png" onmouseover="src='../src/images/Stern.png'" onmouseout="src='../src/images/Stern2.png'" ></a>
+					  </div>								
+				  {/for}
+				</td>
+			  </tr>
+				
+			</tr>
 		<tr>
-			<td><img src="../../Uploads/rezeptBilder/{$bild}" alt="Rezeptbild" height="150" width="250">    
-			<!-- Hier werden die Sterne angezeigt -->
-												{if {$anzSterne}!=0}
-													<!-- Berechnen wieviele Sterne nicht belegt sind und diese anzeigen. -->
-													{for $foo=1 to {math equation="x-y" x=5 y={$anzSterne}} }
-				                    							<div class="stern" style="float: right;">
-		                    										<img alt="stern" height="20" width="20" src="../src/images/Stern2.png">
-	                    										</div>
-	                										
-													{/for}
-													{for $foo=1 to {$anzSterne}}
-				                    							<div class="stern" style="float: right;">
-		                    										<img alt="stern" height="20" width="20" src="../src/images/Stern.png">
-	                    										</div>
-	                										
-													{/for}
-												{else}
-													<div class="stern">keine Bewertung</div>
-												{/if}
-						
-						<!-- Sollte unter der aktuellen Bewertung stehen ! Bekomms nicht hin :( -->
-						<div>Jetzt Bewerten
-						{for $foo=1 to 5}
-				          	<div class="stern" style="float: left;">
-		                    	<a href="rezeptAnzeigen.class.php?bid={$bid}&wert={$foo}"><img alt="stern" height="20" width="20" src="../src/images/Stern2.png" onmouseover="src='../src/images/Stern.png'" onmouseout="src='../src/images/Stern2.png'" ></a>
-	                    	</div>								
-						{/for}
-						</div>
-			</td>
-		</tr>
-		<tr>
-			<td>{$portion} Portionen</td>
-		</tr>
-	</table>
-	<table>
-		<tr>
-			<td>Zutaten:</td>
+			<td><b>Zutaten:</b></td>
 			<td>{$zutaten}</td>
 		</tr>
 		
 		<tr>
-			<td>Zubereitung:</td>
+			<td><b>Zubereitung:</b></td>
 			<td>{$btext}</td>
 		</tr>
 	</table>
-	
 	<!-- Komentare anzeigen mit semantic ui
 	Wollte es mit Semantic machen funkt aber nicht bei mir ! Es reichen auch Tabellen haubtsache die Einr�ckungen passen!!-->
 	
-<div class="ui threaded comments">
-  <h3 class="ui dividing header">Kommentare</h3>
+<h3><b>Kommentare</b></h3>
   <!-- schleife Hauptkommentare   -->
 	{section name=kommentar loop=$kid}
+	<div class="panel">
   		 <div class="comment">
-   			 <a class="avatar">
-   			   <img width="50" height="50" src="../../Uploads/profilBilder/{$bbild[kommentar]}">
-   			 </a>
-   			 <div class="content">
-     			 <a class="author">{$bname[kommentar]}</a>
-      			<div class="metadata">
-      			  <span class="date">{$kdatum[kommentar]}</span>
-     			</div>
-     			 <div class="text">
+		  <table style="width:100%">
+			<tr>
+			  <td>
+				 <a class="avatar">
+				  <img width="50" height="50" src="../../Uploads/profilBilder/{$bbild[kommentar]}">
+				 </a>
+			  </td>
+			<div class="content">
+			  <td rowspan="4">
+				<div class="text">
        				 {$ktext[kommentar]}
       			</div>
-      
-      			<div class="actions">
-        			<a class="reply" onclick="reply({$kid[kommentar]});">Reply</a>
-      			</div>
+			  </td>
+			  <tr>
+				<td>
+				   <a class="author">{$bname[kommentar]}</a>
+				</td>
+			  </tr>
+			  <tr>
+				<td>
+				  <div class="metadata">
+      			  <span class="date">{$kdatum[kommentar]}</span>
+     			</div>
+				</td>
+			  </tr>
+			<tr>
+			  <td></td>
+			  <td><div class="actions" align="right">
+        			<a class="reply" onclick="reply({$kid[kommentar]});">Auf Beitrag antworten</a>
+      			</div></td>
+			</tr>
     		</div>
-        
+		  </table>
+		  </div>
         <!-- Es wird ein Textfeld mit Button angezeigt wenn reply gecklickt wurde! -->
        
         <!-- ReplyForm standartm�ssig hidden -->
@@ -107,12 +135,13 @@
 				<input type="submit" name="neuesUnterk" id="kommentierenI{$kid[kommentar]}" value="Add Reply" style="visibility: hidden;">
 			</div>
 		</form>
+	</div>
 	
         	<!-- Unterkomentar -->  
      {if isset($ukid[kommentar])}
 		{section name=ukommentar loop=$ukid}
 			{if $kid[kommentar] == $ukid[ukommentar]}
-			 						
+			 	<div class="panel"  style="margin-left:50px">	
   				  <div class="comments">
      				 <div class="comment">
        					 <a class="avatar" >
@@ -127,14 +156,15 @@
              				<font color="red">{$uktext[ukommentar]}</font>
           				</div>
         				</div>
-      				</div>
+					  </div>
     				</div>
    				</div>
   			{/if}	
 		{/section}
-   	{/if}	
+   	{/if}
+	
 	{/section}
-   </div>
+   
 	<form class="ui reply form" action="rezeptAnzeigen.class.php?bid={$bid}" method="POST">
 		<div class="field">
 			<textarea name="ktext"></textarea>
@@ -143,6 +173,8 @@
 			<!-- <i class="icon edit"></i> Add Reply-->
 			<input type="submit" name="neuesK" value="Add Reply">
 		</div>
-	</form>{include file='footer.tpl'}
+	</form>
+	</div></div></div></div>
+	{include file='footer.tpl'}
 </body>
 </html>
