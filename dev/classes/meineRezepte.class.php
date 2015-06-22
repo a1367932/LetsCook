@@ -20,8 +20,7 @@ if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 	$sqlSelect = "SELECT bid, titel, bdatum, bild, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung
 				  FROM beitrag NATURAL LEFT OUTER JOIN bewertung
 				  WHERE bname = '".$_SESSION['bid']."'
-				  GROUP BY bid
-				  LIMIT ". $_GET['von'] .", ". $_GET['bis'] ."";
+				  GROUP BY bid";
 	$stmt = mysqli_query($conn, $sqlSelect);
 	//$singleRow = mysqli_fetch_assoc($stmt);
 	while($row = mysqli_fetch_array($stmt))
@@ -40,12 +39,16 @@ if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 		}
 	}
 	
-	$smarty->assign('bild', $bild);
-	$smarty->assign('titel', $titel);
-	$smarty->assign('bewertung', $bewertung);
-	$smarty->assign('bdatum', $bdatum);
-	$smarty->assign('bid', $bid);
-	$smarty->assign('anzSterne', $anzSterne);
+	if(isset($titel)) {
+		$smarty->assign('bild', $bild);
+		$smarty->assign('titel', $titel);
+		$smarty->assign('bewertung', $bewertung);
+		$smarty->assign('bdatum', $bdatum);
+		$smarty->assign('bid', $bid);
+		$smarty->assign('anzSterne', $anzSterne);
+	}
+	else
+		$smarty->assign('titel', null);
 	
 	$smarty->display('meineRezepte.tpl');
 	

@@ -16,8 +16,7 @@
 	$sqlSelect = "SELECT bid, titel, bdatum, bild, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung
 				  FROM beitrag NATURAL LEFT OUTER JOIN bewertung
 				  WHERE kname= '". $_GET['kategorie'] ."'
-				  GROUP BY bid
-				  LIMIT ". $_GET['von'] .", ". $_GET['bis'] ."";
+				  GROUP BY bid";
 	
 	$stmt = mysqli_query($conn, $sqlSelect);
 	
