@@ -48,7 +48,7 @@ if ( !isset( $_POST['registrationSubmit'] ) ) {
 		if($dateityp[2] != 0) {  //handelt es sich um ein Bild
 			if($_FILES['bbild']['size'] <  5242880) {  //ist das Bild kleiner als 5 MB
 				move_uploaded_file($_FILES['bbild']['tmp_name'], $verzeichnis . $_POST['bname'] .".jpg");   //Profilbild wird nach dem Usernamen benannt => eindeutig
-				echo "Das Bild wurde Erfolgreich nach upload/".$_FILES['bbild']['name']." hochgeladen";
+				$smarty->assign('reg_msg', 'Das Bild wurde Erfolgreich nach upload/'.$_FILES['bbild']['name'].' hochgeladen');
 			}
 			else
 				$smarty->assign('reg_msg', 'Das Bild darf nicht größer als 5 MB sein.');
