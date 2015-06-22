@@ -156,17 +156,23 @@
 		}
 	}
 	
-	$smarty->assign('kid', $kid);
-	$smarty->assign('bname', $bname);
-	$smarty->assign('kdatum', $kdatum);
-	$smarty->assign('ktext', $ktext);
-	$smarty->assign('bbild', $bbild);
+	if(isset($kid)) {
+		$smarty->assign('kid', $kid);
+		$smarty->assign('bname', $bname);
+		$smarty->assign('kdatum', $kdatum);
+		$smarty->assign('ktext', $ktext);
+		$smarty->assign('bbild', $bbild);
+	}
+	else 
+		$smarty->assign('kid', null);
 	
-	$smarty->assign('ukid', $ukid);
-	$smarty->assign('ubname', $ubname);
-	$smarty->assign('ukdatum', $ukdatum);
-	$smarty->assign('uktext', $uktext);
-	$smarty->assign('ubbild', $ubbild);
+	if(isset($ukid)) {
+		$smarty->assign('ukid', $ukid);
+		$smarty->assign('ubname', $ubname);
+		$smarty->assign('ukdatum', $ukdatum);
+		$smarty->assign('uktext', $uktext);
+		$smarty->assign('ubbild', $ubbild);
+	}
 	
 	$smarty->display('rezeptAnzeigen.tpl');
 	
