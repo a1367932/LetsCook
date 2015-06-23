@@ -12,6 +12,7 @@
 	<div class="large-12 columns">
 	  <div class="panel">
 		<div class="small-5 columns">
+		  <img src="../src/images/logo.png" width="100px" height="100px" style="float:left"/>
 		  <h3>Le Kochforum</h3>
 		</div>
 		{if {$session} eq 'false'}
