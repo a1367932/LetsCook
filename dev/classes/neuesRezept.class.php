@@ -13,7 +13,7 @@
 	}
 	else{
 		$smarty->assign('session', 'false');
-	}session_start();
+	}
 		
 	include("dbConnection.class.php");
 ?>

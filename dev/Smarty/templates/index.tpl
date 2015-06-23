@@ -4,7 +4,6 @@
 	<script src="src/foundation/js/vendor/fastclick.js"></script>
 	<script src="src/foundation/js/vendor/jquery.js"></script>
   </head>
-  <body>
 
 	  {include file='header.tpl'}
 	  

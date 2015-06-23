@@ -11,7 +11,7 @@
    		<div class="large-12 columns">
 			<div class="panel">
 				
-				<table>
+				<table width="100%">
 					<thead>
 						<tr>
 			     			<th width="20%">Bild</th>

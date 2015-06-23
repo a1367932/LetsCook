@@ -1,7 +1,12 @@
-
+<html>
+<head>
 	<script src="../src/foundation/js/foundation/foundation.js"></script>
 	<script src="../src/foundation/js/foundation/foundation.topbar.js"></script>
 	<link rel ="stylesheet" href="../src/foundation/css/foundation.min.css"></link>
+	<title>Rezepte Anzeigen</title>
+</head>
+<body style="background-image: url('../src/bg.png'); background-repeat: repeat; ">
+
 
   <div class="row">
 	<div class="large-12 columns">
@@ -58,3 +63,4 @@
 	</section>
   </nav>
 	  </div></div>
+</body></html>
