@@ -17,28 +17,28 @@
 				<table>
 				  <tbody>
 					<tr>
-					  <td><img src="/fruestueck.jpg" alt="Fr&uuml;st&uuml;ck"></td>
+					  <td><img src="src/images/fruehstueck.jpg" alt="Fr&uuml;st&uuml;ck" width="100px" height="100px"></td>
 					  <td width="50%"><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Fr&uuml;hst&uuml;ck&von=0&bis=10">Fr&uuml;st&uuml;ck</a></td>
-					  <td width="50px">{$frueh_cnt}</td>
-					   <td><img src="/vorspeise.jpg" alt="Vorspeise"></td>
+					  <td width="50px"><b>{$frueh_cnt}</b></td>
+					   <td><img src="src/images/vorspeise.jpg" alt="Vorspeise" width="100px" height="100px"></td>
 					  <td width="50%"><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Vorspeise&von=0&bis=10">Vorspeise</td>
-					  <td width="50px">{$vor_cnt}</td>
+					  <td width="50px"><b>{$vor_cnt}</b></td>
 					</tr>
 					<tr>
-					  <td><img src="/hauptspeise.jpg" alt="Hauptspeise"></td>
+					  <td><img src="src/images/hauptspeise.jpg" alt="Hauptspeise" width="100px" height="100px"></td>
 					  <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Hauptspeise&von=0&bis=10">Hauptspeise</a></td>
-					  <td>{$haupt_cnt}</td>
-					   <td><img src="/dessert.jpg" alt="Dessert"></td>
+					  <td><b>{$haupt_cnt}</b></td>
+					   <td><img src="src/images/dessert.jpg" alt="Dessert" width="100px" height="100px"></td>
 					   <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Dessert&von=0&bis=10">Dessert</a></td>
-					  <td>{$dessert_cnt}</td>
+					  <td><b>{$dessert_cnt}</b></td>
 					</tr>
 					<tr>
-					   <td><img src="/beilage.jpg" alt="Beilage"></td>
+					   <td><img src="src/images/beilage.jpg" alt="Beilage" width="100px" height="100px"></td>
 					  <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Beilage&von=0&bis=10">Beilage</a></td>
-					  <td>{$beilage_cnt}</td>
-					   <td><img src="/salat.jpg" alt="Salat"></td>
+					  <td><b>{$beilage_cnt}</b></td>
+					   <td><img src="src/images/salat.jpeg" alt="Salat" width="100px" height="100px"></td>
 					   <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Salat&von=0&bis=10">Salat</a></td>
-					  <td>{$salat_cnt}</td>
+					  <td><b>{$salat_cnt}</b></td>
 					</tr>
 				  </tbody>
 				</table>

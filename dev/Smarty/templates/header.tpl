@@ -5,7 +5,7 @@
 	<link rel ="stylesheet" href="src/foundation/css/foundation.min.css"></link>
 	<title>Rezepte Anzeigen</title>
 </head>
-<body style="background-image: url('src/bg.png'); background-repeat: repeat; ">
+<body style="background-image: url('src/images/bg.png'); background-repeat: repeat; ">
 
 	
   <div class="row">
