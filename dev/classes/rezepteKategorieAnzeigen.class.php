@@ -12,6 +12,14 @@
 	
 	include("dbConnection.class.php");
 	
+	session_start();
+	if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
+		$smarty->assign('session', 'true');
+	}
+	else{
+		$smarty->assign('session', 'false');
+	}
+	
 	//Rezeptdaten der jeweiligen Kategorie auslesen
 	$sqlSelect = "SELECT bid, titel, bdatum, bild, count(bbid) AS anzahlBewertung, sum(wert) AS gesamtBewertung
 				  FROM beitrag NATURAL LEFT OUTER JOIN bewertung

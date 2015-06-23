@@ -8,6 +8,12 @@
 	$smarty->setConfigDir('../Smarty/configs');
 	$smarty->display('neuesRezept.tpl');
 	session_start();
+	if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
+		$smarty->assign('session', 'true');
+	}
+	else{
+		$smarty->assign('session', 'false');
+	}session_start();
 		
 	include("dbConnection.class.php");
 ?>

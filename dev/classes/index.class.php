@@ -6,7 +6,7 @@
 	$smarty->setCompileDir('../Smarty/templates_c');
 	$smarty->setCacheDir('../Smarty/cache');
 	$smarty->setConfigDir('../Smarty/configs');
-
+	include("dbConnection.class.php");
 	session_start();
 	if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
 		$smarty->assign('session', 'true');
@@ -35,3 +35,5 @@
 	}
 	$smarty->display('login_success.tpl');
 ?>
+
+

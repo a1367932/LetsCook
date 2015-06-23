@@ -20,26 +20,26 @@
 					<tr>
 					  <td><img src="/fruestueck.jpg" alt="Fr&uuml;st&uuml;ck"></td>
 					  <td width="50%"><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Fr&uuml;hst&uuml;ck&von=0&bis=10">Fr&uuml;st&uuml;ck</a></td>
-					  <td width="50px">0</td>
+					  <td width="50px">{$frueh_cnt}</td>
 					   <td><img src="/vorspeise.jpg" alt="Vorspeise"></td>
 					  <td width="50%"><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Vorspeise&von=0&bis=10">Vorspeise</td>
-					  <td width="50px">0</td>
+					  <td width="50px">{$vor_cnt}</td>
 					</tr>
 					<tr>
 					  <td><img src="/hauptspeise.jpg" alt="Hauptspeise"></td>
 					  <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Hauptspeise&von=0&bis=10">Hauptspeise</a></td>
-					  <td>0</td>
+					  <td>{$haupt_cnt}</td>
 					   <td><img src="/dessert.jpg" alt="Dessert"></td>
 					   <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Dessert&von=0&bis=10">Dessert</a></td>
-					  <td>0</td>
+					  <td>{$dessert_cnt}</td>
 					</tr>
 					<tr>
 					   <td><img src="/beilage.jpg" alt="Beilage"></td>
 					  <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Beilage&von=0&bis=10">Beilage</a></td>
-					  <td>0</td>
+					  <td>{$beilage_cnt}</td>
 					   <td><img src="/salat.jpg" alt="Salat"></td>
 					   <td><a href="classes/rezepteKategorieAnzeigen.class.php?kategorie=Salat&von=0&bis=10">Salat</a></td>
-					  <td>0</td>
+					  <td>{$salat_cnt}</td>
 					</tr>
 				  </tbody>
 				</table>

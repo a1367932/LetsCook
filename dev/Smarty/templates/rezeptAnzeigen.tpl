@@ -57,6 +57,7 @@
 			  <tr>
 				<td><b>Portionen:</b></td>
 				<td>{$portion}</td>
+			  {if {$session} neq 'false'}
 			  <tr>
 				<td>
 				 <b>Jetzt Bewerten:</b>
@@ -69,6 +70,7 @@
 				  {/for}
 				</td>
 			  </tr>
+			  {/if}
 				
 			</tr>
 		<tr>
@@ -115,16 +117,18 @@
 				</td>
 			  </tr>
 			<tr>
+			{if {$session} neq 'false'}
 			  <td></td>
 			  <td><div class="actions" align="right">
         			<a class="reply" onclick="reply({$kid[kommentar]});">Auf Beitrag antworten</a>
       			</div></td>
+			{/if}
 			</tr>
     		</div>
 		  </table>
 		  </div>
         <!-- Es wird ein Textfeld mit Button angezeigt wenn reply gecklickt wurde! -->
-       
+       {if {$session} neq 'false'}
         <!-- ReplyForm standartm�ssig hidden -->
         <form class="ui reply  form" action="rezeptAnzeigen.class.php?neuesUk={$kid[kommentar]}&bid={$bid}" method="POST" style="visibility: hidden;" id="kommentierenForm{$kid[kommentar]}">
 			<div class="field" style="visibility: hidden;" id="kommentierenDiv1{$kid[kommentar]}">
@@ -135,6 +139,7 @@
 				<input type="submit" name="neuesUnterk" id="kommentierenI{$kid[kommentar]}" value="Antworten" style="visibility: hidden;">
 			</div>
 		</form>
+		{/if}
 	</div>
 	
         	<!-- Unterkomentar -->  
@@ -177,7 +182,7 @@
    	{/if}
 	
 	{/section}
-   
+   {if {$session} neq 'false'}
 	<form class="ui reply form" action="rezeptAnzeigen.class.php?bid={$bid}" method="POST">
 		<div class="field">
 			<textarea name="ktext"  style="height:200px"></textarea>
@@ -187,6 +192,7 @@
 			<input type="submit" name="neuesK" value="Senden">
 		</div>
 	</form>
+	{/if}
 	</div></div></div></div>
 	{include file='footer.tpl'}
 </body>

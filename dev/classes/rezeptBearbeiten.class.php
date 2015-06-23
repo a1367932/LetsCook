@@ -11,6 +11,14 @@ if ( !isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 	$smarty->setConfigDir('../Smarty/configs');
 	
 	include("dbConnection.class.php");
+	session_start();
+	if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
+		$smarty->assign('session', 'true');
+	}
+	else{
+		$smarty->assign('session', 'false');
+	}
+	
 	
 	//Benutzerdaten auslesen
 	$sqlSelect = "SELECT * FROM beitrag WHERE bid = 2";//. $_POST['bid'];
