@@ -21,7 +21,7 @@ if ( !isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 	
 	
 	//Benutzerdaten auslesen
-	$sqlSelect = "SELECT * FROM beitrag WHERE bid = 2";//. $_POST['bid'];
+	$sqlSelect = "SELECT * FROM beitrag WHERE bid = '".$_GET['bid']."'";
 	$stmt = mysqli_query($conn, $sqlSelect);
 	$singleRow = mysqli_fetch_assoc($stmt);
 
@@ -38,7 +38,7 @@ if ( !isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 elseif ( isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 	
 	//Bild auf den Server hochladen
-	$verzeichnis = "C:/Users/markus/Desktop/uploadServer/rezeptbilder/";
+	$verzeichnis = "../../Uploads/rezeptbilder/";
 	
 	if ($_FILES['bild']['name']!= null)	{
 		$dateityp = GetImageSize($_FILES['bild']['tmp_name']);
@@ -67,7 +67,7 @@ elseif ( isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 		
 	$sqlUpdate .= "zutaten = '".$_POST['zutaten']."',
 				   portion = '".$_POST['portion']."'
-				   WHERE bid = 2";
+				   WHERE bid = '".$_GET['bid']."'";
 	
 	if ($conn->query($sqlUpdate) === false)
 		echo "Ein Fehler ist beim Updaten aufgetretten: " . $conn->error;

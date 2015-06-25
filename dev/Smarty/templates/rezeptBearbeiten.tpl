@@ -12,7 +12,7 @@
 		  <div class="large-12 columns">
 			<div class="panel">
 			
-	<form action="rezeptBearbeiten.class.php" method="POST" enctype="multipart/form-data">
+	<form action="rezeptBearbeiten.class.php?bid={$bid}" method="POST" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>Rezeptname</td>
