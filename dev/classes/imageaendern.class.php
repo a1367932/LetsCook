@@ -14,7 +14,7 @@
 	}
 	else{
 		$smarty->assign('session', 'false');
-	}session_start();
+	}
 ?>
 
 
