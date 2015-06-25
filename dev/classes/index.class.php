@@ -33,7 +33,8 @@
 	}else 
 		echo "Nutzerdaten falsch!";
 	}
-	$smarty->display('login_success.tpl');
+	header("Location: ../index.php");
+	//$smarty->display('dev/index.php');
 ?>
 
 
