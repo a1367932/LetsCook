@@ -14,7 +14,7 @@
 	<form action="meineDaten.class.php" method="POST">
 	<table>
 		<tr>
-			<td><img src="../../Uploads/profilBilder/{$bbild}" alt="Profilbild" height="150" width="150"></td>
+			<td><img src="../../Uploads/profilBilder/{$bbild}?time()" alt="Profilbild" height="150" width="150"></td>
 		</tr>
 		<tr>
 			<td>{$bname}</td>
