@@ -2,6 +2,7 @@
 
 	$servername = "localhost";
 	$username = "root";
+	//Server password: ise7
 	$password = "";
 	$database = "is-forum";
 	
