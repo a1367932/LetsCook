@@ -31,9 +31,9 @@ if ( isset( $_POST['neuesRezeptSubmit'] ) ) {
 	
 	//SQL - Anweisung ausführen
 	if (mysqli_query($conn, $sqlInsert)) {
-		echo "Rezept wurde erfolgreich gespeichert!";
+		$smarty->assign('reg_msg', 'Rezept wurde erfolgreich gespeichert!');
 	} else {
-		echo "Fehler: " . $sqlInsert . "<br>" . mysqli_error($conn);
+		$smarty->assign('reg_msg', 'Fehler: ' . $sqlInsert . '<br>' . mysqli_error($conn));
 	}
 	
 	//Bild auf den Server hochladen
@@ -44,17 +44,17 @@ if ( isset( $_POST['neuesRezeptSubmit'] ) ) {
 		if($dateityp[2] != 0) {  //handelt es sich um ein Bild
 			if($_FILES['bild']['size'] <  5242880) {  //ist das Bild kleiner als 5 MB
 				move_uploaded_file($_FILES['bild']['tmp_name'], $verzeichnis . $_POST['titel'] .".jpg");
-				echo "Das Bild wurde Erfolgreich nach upload/".$_FILES['bild']['name']." hochgeladen";
+				$smarty->assign('reg_msg', "Das Bild wurde Erfolgreich nach upload/".$_FILES['bild']['name']." hochgeladen");
 			}
 			else
-				echo "Das Bild darf nicht größer als 5 MB sein.";
+				$smarty->assign('reg_msg', 'Das Bild darf nicht größer als 5 MB sein.');
 		} else
-			echo "Es handelt sich nicht um eine gif bzw. jpg Datei.";
+			$smarty->assign('reg_msg', 'Es handelt sich nicht um eine gif bzw. jpg Datei.');
 	} else
-		echo "Es wurde kein Produktbild angegeben.";
+		$smarty->assign('reg_msg', '"Es wurde kein Produktbild angegeben.');
 	
 	mysqli_close($conn);
 	
-// 	header("Location: meineRezepte.class.php");
+	header("Location: meineRezepte.class.php");
 }
 ?>
