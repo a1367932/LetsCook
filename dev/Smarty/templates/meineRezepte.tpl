@@ -25,7 +25,7 @@
  			 <!-- Tabelle der Rezepte wird erzgeugt -->
  		{$counter=1}
 		{section name=rezepte loop=$titel}
-				<tr onclick="window.location.href='rezeptAnzeigen.class.php?bid={$bid[rezepte]}'" onMouseOver="this.bgColor='#D4FFFD'" onMouseOut="this.bgColor='#FFFFFF'">
+				<tr onclick="window.location.href='rezeptAnzeigen.class.php?bid={$bid[rezepte]}'" onMouseOver="this.style.background='#D4FFFD';" onMouseOut="this.style.background='White';">
 									<td><img src="../../Uploads/rezeptBilder/{$bild[rezepte]}?time()+{$counter++}" alt="RezeptBild" height="150" width="150"></td>
 									<td valign="top">{$titel[rezepte]} <br/> 
 														<!-- Hier werden die Sterne angezeigt -->
