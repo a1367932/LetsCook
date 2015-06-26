@@ -49,6 +49,7 @@
 									</td>
 									<td valign="top"> {$bdatum[rezepte]}</td>
 									<td valign="middle"><a href="rezeptBearbeiten.class.php?bid={$bid[rezepte]}">Bearbeiten</a></td>
+									<td valign="middle"><a href="rezeptBearbeiten.class.php?bid={$bid[rezepte]}&funktion=entfernen">Entfernen</a></td>
 								</tr>		
 					    
 	    {/section}

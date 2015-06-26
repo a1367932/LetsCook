@@ -11,29 +11,46 @@ if ( !isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 	$smarty->setConfigDir('../Smarty/configs');
 	
 	include("dbConnection.class.php");
-	session_start();
-	if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
-		$smarty->assign('session', 'true');
+	
+	if(isset($_GET['funktion']) && $_GET['funktion'] == 'entfernen') {
+		//Rezept löschen
+		$sqlDelete = "DELETE FROM beitrag WHERE bid = '".$_GET['bid']."'";
+		if (mysqli_query($conn, $sqlDelete)) {
+			$smarty->assign('reg_msg', 'Rezept wurde erfolgreich gelöscht!');
+		} else {
+			$smarty->assign('reg_msg', 'Beim Löschvorgang ist ein Fehler aufgetreten!');
+		}
+		
+		header("Location: meineRezepte.class.php");
 	}
-	else{
-		$smarty->assign('session', 'false');
+	else {
+	
+		session_start();
+		if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
+			$smarty->assign('session', 'true');
+		}
+		else{
+			$smarty->assign('session', 'false');
+		}
+		
+		
+		//Benutzerdaten auslesen
+		$sqlSelect = "SELECT * FROM beitrag WHERE bid = '".$_GET['bid']."'";
+		$stmt = mysqli_query($conn, $sqlSelect);
+		$singleRow = mysqli_fetch_assoc($stmt);
+	
+		$smarty->assign('titel', $singleRow['titel']);
+		$smarty->assign('btext', $singleRow['btext']);
+		//Hier muss bei dem string zuerst die ��s in und uumls umgewandelt werden
+		$kname=str_replace("ü", "&uuml;", $singleRow['kname']);
+		$smarty->assign('kname', $kname);
+		$smarty->assign('bild', $singleRow['bild']);
+		$smarty->assign('zutaten', $singleRow['zutaten']);
+		$smarty->assign('portion', $singleRow['portion']);
+		$smarty->display('rezeptBearbeiten.tpl');
 	}
 	
-	
-	//Benutzerdaten auslesen
-	$sqlSelect = "SELECT * FROM beitrag WHERE bid = '".$_GET['bid']."'";
-	$stmt = mysqli_query($conn, $sqlSelect);
-	$singleRow = mysqli_fetch_assoc($stmt);
-
-	$smarty->assign('titel', $singleRow['titel']);
-	$smarty->assign('btext', $singleRow['btext']);
-	//Hier muss bei dem string zuerst die ��s in und uumls umgewandelt werden
-	$kname=str_replace("ü", "&uuml;", $singleRow['kname']);
-	$smarty->assign('kname', $kname);
-	$smarty->assign('bild', $singleRow['bild']);
-	$smarty->assign('zutaten', $singleRow['zutaten']);
-	$smarty->assign('portion', $singleRow['portion']);
-	$smarty->display('rezeptBearbeiten.tpl');
+	mysqli_close($conn);
 }
 elseif ( isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 	
