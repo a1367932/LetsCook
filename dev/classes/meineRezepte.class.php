@@ -29,6 +29,15 @@ if ( !isset( $_POST['meineRezepteSubmit'] ) ) {
 				  GROUP BY bid";
 	$stmt = mysqli_query($conn, $sqlSelect);
 	//$singleRow = mysqli_fetch_assoc($stmt);
+	
+	//Null setzen falls keine Rezepte vorhanden
+	$titel[] = null;
+	$bild[] = null;
+	$bdatum[] = null;
+	$bid[] = null;
+	$anzSterne[]=null;
+	$bewertung[] = null;
+	
 	while($row = mysqli_fetch_array($stmt))
 	{
 		$titel[] = $row['titel'];

@@ -23,6 +23,7 @@
  				<tbody>
  				<!-- Tabelle der Rezepte wird erzgeugt -->
  				{section name=rezepte loop=$titel}
+ 						{if {$titel[rezepte]} != null}
 			 					<tr onclick="window.location.href='rezeptAnzeigen.class.php?bid={$bid[rezepte]}'" onMouseOver="this.style.background='#D4FFFD';" onMouseOut="this.style.background='White';">
 									<td><img src="../../Uploads/rezeptBilder/{$bild[rezepte]}" alt="Profilbild" height="150" width="150"></td>
 									<td valign="top">{$titel[rezepte]} <br/> 
@@ -47,7 +48,7 @@
 									</td>
 									<td valign="top"> {$bdatum[rezepte]}</td>
 								</tr>		
-					    
+					    {/if}
 				{/section}
 				</tbody>
 			 </table>

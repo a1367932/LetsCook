@@ -25,6 +25,7 @@
  			 <!-- Tabelle der Rezepte wird erzgeugt -->
  		{$counter=1}
 		{section name=rezepte loop=$titel}
+			{if {$titel[rezepte]} != null}
 				<tr onclick="window.location.href='rezeptAnzeigen.class.php?bid={$bid[rezepte]}'" onMouseOver="this.style.background='#D4FFFD';" onMouseOut="this.style.background='White';">
 									<td><img src="../../Uploads/rezeptBilder/{$bild[rezepte]}?time()+{$counter++}" alt="RezeptBild" height="150" width="150"></td>
 									<td valign="top">{$titel[rezepte]} <br/> 
@@ -51,8 +52,8 @@
 									<td valign="middle"><a href="rezeptBearbeiten.class.php?bid={$bid[rezepte]}">Bearbeiten</a></td>
 									<td valign="middle"><a href="rezeptBearbeiten.class.php?bid={$bid[rezepte]}&funktion=entfernen">Entfernen</a></td>
 								</tr>		
-					    
-	    {/section}
+			 {/if}	    
+	      {/section}
 				</tbody>
 			 </table>
 			</div>
