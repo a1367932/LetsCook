@@ -15,6 +15,7 @@
 							document.getElementById("passwort2").style.border='3px red solid';
 							document.getElementById("passwort").style.border='3px red solid';
 							document.getElementById("submit").type='button';
+							alert(unescape("Die Passw%F6rter sind nicht ident!"))
 						}else{
 							document.getElementById("passwort2").style.border='';
 							document.getElementById("passwort").style.border='';
@@ -90,8 +91,8 @@
 		<tr>
 			<td>Adresse</td>
 			<td><input type="text" name="strasse" placeholder="Strasse" required="required"></td>
-			<td><input type="text" name="hausnummer" placeholder="Hausnummer" required="required"></td>
-			<td><input type="text" name="plz" placeholder="PLZ" required="required"></td>
+			<td><input type="number" name="hausnummer" placeholder="Hausnummer" required="required"></td>
+			<td><input type="number" name="plz" placeholder="PLZ" required="required"></td>
 			<td><input type="text" name="ort" placeholder="Ort" required="required"></td>
 			<td><input type="text" name="land" placeholder="Land" required="required"></td>
 		</tr>
