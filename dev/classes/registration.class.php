@@ -60,5 +60,5 @@ if ( !isset( $_POST['registrationSubmit'] ) ) {
 	mysqli_close($conn);
 }
 
-$smarty->display('registration.tpl');
+header("Location: ../index.php");
 ?>
