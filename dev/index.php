@@ -17,8 +17,7 @@ $smarty->assign('login', 'false');
 	
 	
 	
-	if($_SESSION['loginFail'] != null) {
-		$smarty->assign('login', 'asdfsadf');
+	if(isset($_SESSION['loginFail']) && $_SESSION['loginFail'] != null) {
 		$_SESSION['loginFail'] = null;
 	} else {
 		$smarty->assign('loginFail', null);
