@@ -14,6 +14,17 @@ $smarty->assign('login', 'false');
 	include("classes/dbConnection.class.php");
 
 	session_start();
+	
+	
+	
+	if($_SESSION['loginFail'] != null) {
+		$smarty->assign('login', 'asdfsadf');
+		$_SESSION['loginFail'] = null;
+	} else {
+		$smarty->assign('loginFail', null);
+	}
+	
+	
 	if(isset($_SESSION['bid']) && !empty($_SESSION['bid'])) {
 		$smarty->assign('session', 'true');
 	}

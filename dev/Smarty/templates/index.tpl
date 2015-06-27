@@ -3,7 +3,12 @@
 	<title>Startseite</title>
 	<script src="src/foundation/js/vendor/fastclick.js"></script>
 	<script src="src/foundation/js/vendor/jquery.js"></script>
+	
+	
+	
+	
   </head>
+  <body>
 
 	  {include file='header.tpl'}
 	  
@@ -48,6 +53,12 @@
 		</div>
 	
   {include file='footer.tpl'}
+  
+    {if {$loginFail} != null}
+	  	<script type="text/javascript">
+			alert("Benutzername oder Passwort falsch!");
+		</script>
+	{/if}
 	  
   </body>
 </html>
