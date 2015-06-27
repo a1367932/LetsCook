@@ -30,7 +30,9 @@
 		{/if}
 		<div class="row">
 		  <div class="small-3 right columns">
+		   {if {$session} == 'false'}
 			<i><h4><small>Registriere dich <a href="classes/registration.class.php">hier</a>!</small></h3></i><br/>
+		   {/if}
 			{if {$session} neq 'false'}
 			  <i><h4><small><a href="classes/logout.class.php">Logout</a>!</small></h3></i>
 			{/if}

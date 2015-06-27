@@ -58,7 +58,8 @@ if ( !isset( $_POST['registrationSubmit'] ) ) {
 		$smarty->assign('reg_msg', 'Es wurde kein Profilfbild angegeben.');
 	
 	mysqli_close($conn);
+	header("Location: ../index.php");
 }
 
-header("Location: ../index.php");
+$smarty->display('registration.tpl');
 ?>

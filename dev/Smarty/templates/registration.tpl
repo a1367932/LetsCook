@@ -46,8 +46,8 @@
 		</tr>
 		<tr>
 			<td>Geschlecht</td>
-			<td> <input type="radio" name="geschlecht" value="weiblich" required="required">weiblich</td>
-			<td> <input type="radio" name="geschlecht" value="maennlich" required="required">m&aumlnnlich</td>
+			<td> <input type="radio" name="geschlecht" value="w" required="required">weiblich</td>
+			<td> <input type="radio" name="geschlecht" value="m" required="required">m&aumlnnlich</td>
 		</tr>
 		<tr>
 			<td>Geburtsdatum</td>
