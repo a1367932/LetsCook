@@ -47,6 +47,7 @@ if ( !isset( $_POST['rezeptBearbeitenSubmit'] ) ) {
 		$smarty->assign('bild', $singleRow['bild']);
 		$smarty->assign('zutaten', $singleRow['zutaten']);
 		$smarty->assign('portion', $singleRow['portion']);
+		$smarty->assign('bid', $_GET['bid']);
 		$smarty->display('rezeptBearbeiten.tpl');
 	}
 	
