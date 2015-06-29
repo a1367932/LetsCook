@@ -17,9 +17,10 @@
 ?>
 
 <?php
+
 	if ( !( $_POST['password']!=null ) ) {
-	
-	$smarty->assign('login', 'false');
+		$smarty->assign('login', 'false');
+		$_SESSION['loginFail'] = "Bitte geben Sie ein Passwort ein!";
 	}
 	else{
 		$smarty->assign('login', 'true');
@@ -31,9 +32,10 @@
 	if($singleRow!=null){//Wenn der Benutzer in der Datenbank gespeichert ist so kehrt man zur index seite mit header2 zurück
 		$_SESSION['bid']=$singleRow['bname'];//Session für die bid
 	}else 
-		echo "Nutzerdaten falsch!";
+		$_SESSION['loginFail'] = "Benutzername oder Passwort falsch!";
 	}
-	$smarty->display('login_success.tpl');
+	header("Location: ../index.php");
+	//$smarty->display('dev/index.php');
 ?>
 
 

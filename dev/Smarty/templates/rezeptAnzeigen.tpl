@@ -51,7 +51,7 @@
 			  <table width="100%">
 			  <tr>
 				<th colspan="2" style="text-align: center">
-				  <img src="../../Uploads/rezeptBilder/{$bild}" alt="Rezeptbild" height="150" width="250" align="middle" border="2" >
+				  <img src="../../Uploads/rezeptBilder/{$bild}?time()" alt="Rezeptbild" height="150" width="250" align="middle" border="2" >
 				</th>
 			  </tr>
 			  <tr>

@@ -128,7 +128,7 @@
 	
 	//Kommentare auslesen
 	$sqlSelectKommentare = "SELECT kid, bname, kdatum, ktext, bbild FROM erstellt 
-						    NATURAL JOIN beitrag
+						    NATURAL LEFT OUTER JOIN beitrag
 						    NATURAL JOIN kommentar
 							NATURAL JOIN benutzer
 						    WHERE bid = ".$_GET['bid'] ."

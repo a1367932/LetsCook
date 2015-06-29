@@ -2,6 +2,7 @@
 
 	$servername = "localhost";
 	$username = "root";
+	//Server password: ise7
 	$password = "";
 	$database = "is-forum";
 	
@@ -12,5 +13,6 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		exit;
 	}
+	mysql_query("SET NAMES 'utf8'");
 
 ?>
