@@ -187,7 +187,7 @@
 		<div class="field">
 			<textarea name="ktext"  style="height:200px"></textarea>
 		</div>
-		<div class="ui blue labeled submit icon button">
+		<div>
 			<!-- <i class="icon edit"></i> Add Reply-->
 			<input type="submit" name="neuesK" value="Senden">
 		</div>

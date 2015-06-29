@@ -11,7 +11,7 @@
 	<div class="large-12 columns">
 	  <div class="panel">
 	<form action="neuesRezept.class.php" method="POST" enctype="multipart/form-data">
-	<table>
+	<table width="100%">
 		<tr>
 			<td>Rezeptname</td>
 			<td><input type="text" name="titel" required="required"></td>
