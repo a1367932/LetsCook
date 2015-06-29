@@ -12,7 +12,7 @@
 	  <div class="panel">
 	<form action="meineRezepte.class.php" method="POST">
 		
-		<table>
+		<table width="100%">
 			<thead>
 				<tr>
 			     	<th width="20%">Bild</th>

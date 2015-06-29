@@ -23,7 +23,7 @@
 			<td><a href="imageaendern.class.php">Foto &auml;ndern</a></td>
 		</tr>
 	</table>
-	<table>
+	<table  width="100%">
 		<tr>
 			<td><b>Vor- und Nachname</b></td>
 			<td>{$vorname}</td>
@@ -46,7 +46,7 @@
 			<td>{$land}</td>
 		</tr>
 		<tr>
-			<td><input type="submit" name="meineDatenSubmit" value="Daten &Auml;ndern"></td></td>
+			<td><input type="submit" name="meineDatenSubmit" value="Daten ändern"></td></td>
 		</tr>
 	</table>
 	</form>

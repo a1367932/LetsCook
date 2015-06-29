@@ -134,7 +134,7 @@
 			<div class="field" style="visibility: hidden;" id="kommentierenDiv1{$kid[kommentar]}">
 				<textarea style="visibility: hidden;" id="kommentierenText{$kid[kommentar]}" name="uktext"></textarea>
 			</div>
-			<div class="ui blue labeled submit icon button" style="visibility: hidden;" id="kommentierenDiv2{$kid[kommentar]}">
+			<div style="visibility: hidden;" id="kommentierenDiv2{$kid[kommentar]}">
 				<!--  <i class="icon edit"  style="visibility: hidden;" id="kommentierenI{$kid[kommentar]}"></i> Add Reply-->
 				<input type="submit" name="neuesUnterk" id="kommentierenI{$kid[kommentar]}" value="Antworten" style="visibility: hidden;">
 			</div>

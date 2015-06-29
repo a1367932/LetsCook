@@ -12,6 +12,9 @@
 			<div class="panel">
 	<form action="datenBearbeiten.class.php" method="POST" enctype="multipart/form-data">
 	<table>
+	  <tr>
+			<td colspan="6" style="text-align: center"><b>Personelle Daten</b></td>
+		</tr>
 		<tr>
 			<td>Vorname</td>
 			<td><input type="text" name="vorname" value="{$vorname}" required="required"></td>
@@ -29,7 +32,7 @@
 			<td><input type="text" name="land" value="{$land}" required="required"></td>
 		</tr>
 		<tr>
-			<td>Nutzerdaten</td>
+			<td colspan="6" style="text-align: center"><b>Nutzerdaten</b></td>
 		</tr>
 		<tr>
 			<td>Passwort</td>
@@ -49,5 +52,6 @@
 			</div>
 		  </div>
    </div>
+   {include file='footer.tpl'}
 </body>
 </html>
